@@ -4,17 +4,11 @@ Copyright (c) 2014-2019, The MKEcoin Project
 
 ## Development resources
 
-- Web: [getMKEcoin.org](https://getMKEcoin.org)
-- Mail: [dev@getMKEcoin.org](mailto:dev@getMKEcoin.org)
-- Github: [https://github.com/MKEcoin-project/MKEcoin-gui](https://github.com/MKEcoin-project/MKEcoin-gui)
-- IRC: [#MKEcoin-dev on Freenode](irc://chat.freenode.net/#MKEcoin-dev)
-- Translation platform (Weblate): [translate.getMKEcoin.org](https://translate.getMKEcoin.org)
+- Web: [getMKEcoin.org](https://www.mkecoin.io/)
+- Mail: [dev@getMKEcoin.org](mailto:mke.technology@yahoo.com)
+- Github: [https://github.com/MKEcoin-project/MKEcoin-gui](https://github.com/MKEcoin/MKEcoin-gui.git)
+- Translation platform (Weblate): [translate.getMKEcoin.org](http://pool.mkeblock.io/)
 - UI Design: [MKEcoin-GUI on Figma](https://www.figma.com/file/DplJ2DDQfIKiuRvolHX2hN/MKEcoin-GUI)
-
-## Vulnerability response
-
-- Our [Vulnerability Response Process](https://github.com/MKEcoin-project/meta/blob/master/VULNERABILITY_RESPONSE_PROCESS.md) encourages responsible disclosure
-- We are also available via [HackerOne](https://hackerone.com/MKEcoin)
 
 ## Introduction
 
@@ -28,19 +22,19 @@ MKEcoin is a private, secure, untraceable, decentralised digital currency. You a
 
 ## About this project
 
-This is the GUI for the [core MKEcoin implementation](https://github.com/MKEcoin-project/MKEcoin). It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of MKEcoin that uses the protocol and network in a compatible manner.
+This is the GUI for the [core MKEcoin implementation](https://github.com/MKEcoin/mkecoin.git). It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of MKEcoin that uses the protocol and network in a compatible manner.
 
 As with many development projects, the repository on Github is considered to be the "staging" area for the latest changes. Before changes are merged into that branch on the main repository, they are tested by individual developers in their own branches, submitted as a pull request, and then subsequently tested by contributors who focus on testing and code reviews. That having been said, the repository should be carefully considered before using it in a production environment, unless there is a patch in the repository for a particular show-stopping issue you are experiencing. It is generally a better idea to use a tagged release for stability.
 
 ## Supporting the project
 
-MKEcoin is a 100% community-sponsored endeavor. If you want to join our efforts, the easiest thing you can do is support the project financially. Both MKEcoin and Bitcoin donations can be made to **donate.getMKEcoin.org** if using a client that supports the [OpenAlias](https://openalias.org) standard.
+MKEcoin is a 100% community-sponsored endeavor. If you want to join our efforts, the easiest thing you can do is support the project financially. Both MKEcoin and Bitcoin donations can be made to **donate.getMKEcoin.org** if using a client that supports the [OpenAlias](https://www.mkecoin.io/) standard.
 
 The MKEcoin donation address is: `888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H` (viewkey: `f359631075708155cc3d92a32b75a7d02a5dcf27756707b47a2b31b21c389501`)
 
 The Bitcoin donation address is: `1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H`
 
-GUI development funding and/or some supporting services are also graciously provided by [sponsors](https://www.getMKEcoin.org/community/sponsorships/):
+GUI development funding and/or some supporting services are also graciously provided by [sponsors](https://www.mkecoin.io/index.php?m=home&c=Lists&a=index&tid=10):
 
 [<img width="150" src="https://www.getMKEcoin.org/img/sponsors/tarilabs.png"/>](https://tarilabs.com/)
 [<img width="150" src="https://www.getMKEcoin.org/img/sponsors/globee.png"/>](https://globee.com/)
