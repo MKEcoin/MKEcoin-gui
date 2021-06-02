@@ -1,6 +1,6 @@
 # MKEcoin GUI
 
-Copyright (c) 2019-2021, The MKEcoin Project
+Copyright (c) 2018-2021, The MKEcoin Project
 
 ## Development resources
 
@@ -8,7 +8,6 @@ Copyright (c) 2019-2021, The MKEcoin Project
 - Mail: [dev@getMKEcoin.org](mailto:mke.technology@yahoo.com)
 - Github: [https://github.com/MKEcoin-project/MKEcoin-gui](https://github.com/MKEcoin/MKEcoin-gui.git)
 - Translation platform (Weblate): [translate.getMKEcoin.org](http://pool.mkeblock.io/)
-- UI Design: [MKEcoin-GUI on Figma](https://www.figma.com/file/DplJ2DDQfIKiuRvolHX2hN/MKEcoin-GUI)
 
 ## Introduction
 
