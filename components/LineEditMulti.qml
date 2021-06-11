@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 ColumnLayout {
     id: item
@@ -50,32 +50,32 @@ ColumnLayout {
     property int inputRadius: 4
 
     property bool placeholderCenter: false
-    property string placeholderFontFamily: MKEcoinComponents.Style.fontRegular.name
+    property string placeholderFontFamily: mkecoinComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 18
-    property string placeholderColor: MKEcoinComponents.Style.defaultFontColor
+    property string placeholderColor: mkecoinComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.35
 
     property bool borderDisabled: false
     property string borderColor: {
         if(input.error && input.text !== ""){
-            return MKEcoinComponents.Style.inputBorderColorInvalid;
+            return mkecoinComponents.Style.inputBorderColorInvalid;
         } else if(input.activeFocus){
-            return MKEcoinComponents.Style.inputBorderColorActive;
+            return mkecoinComponents.Style.inputBorderColorActive;
         } else {
-            return MKEcoinComponents.Style.inputBorderColorInActive;
+            return mkecoinComponents.Style.inputBorderColorInActive;
         }
     }
 
     property alias error: input.error
 
-    property string labelFontColor: MKEcoinComponents.Style.defaultFontColor
+    property string labelFontColor: mkecoinComponents.Style.defaultFontColor
     property bool labelFontBold: false
     property int labelFontSize: 16
     property bool labelButtonVisible: false
 
-    property string fontColor: MKEcoinComponents.Style.defaultFontColor
-    property string fontFamily: MKEcoinComponents.Style.fontRegular.name
+    property string fontColor: mkecoinComponents.Style.defaultFontColor
+    property string fontFamily: mkecoinComponents.Style.fontRegular.name
     property bool fontBold: false
     property int fontSize: 16
 
@@ -102,11 +102,11 @@ ColumnLayout {
         height: (inputLabel.height + 10)
         visible: showingHeader ? true : false
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: inputLabel
             anchors.top: parent.top
             anchors.left: parent.left
-            font.family: MKEcoinComponents.Style.fontRegular.name
+            font.family: mkecoinComponents.Style.fontRegular.name
             font.pixelSize: item.labelFontSize
             font.bold: labelFontBold
             textFormat: Text.RichText
@@ -124,13 +124,13 @@ ColumnLayout {
             anchors.right: parent.right
             spacing: 16
 
-            MKEcoinComponents.LabelButton {
+            mkecoinComponents.LabelButton {
                 id: labelButton
                 onClicked: labelButtonClicked()
                 visible: labelButtonVisible
             }
 
-            MKEcoinComponents.LabelButton {
+            mkecoinComponents.LabelButton {
                 id: copyButtonId
                 visible: copyButton && input.text !== ""
                 text: qsTr("Copy") + translationManager.emptyString
@@ -143,7 +143,7 @@ ColumnLayout {
                 }
             }
 
-            MKEcoinComponents.LabelButton {
+            mkecoinComponents.LabelButton {
                 id: pasteButtonId
                 onClicked: {
                     input.clear();
@@ -155,7 +155,7 @@ ColumnLayout {
         }
     }
 
-    MKEcoinComponents.InputMulti {
+    mkecoinComponents.InputMulti {
         id: input
         readOnly: false
         addressValidation: false
@@ -177,7 +177,7 @@ ColumnLayout {
         mouseSelection: item.mouseSelection
         onEditingFinished: item.editingFinished()
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: placeholderLabel
             visible: input.text ? false : true
             anchors.verticalCenter: parent.verticalCenter

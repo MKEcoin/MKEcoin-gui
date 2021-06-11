@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2020, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -30,8 +30,8 @@ import QtQuick 2.9
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 
-import MKEcoinComponents.Clipboard 1.0
-import "../components" as MKEcoinComponents
+import mkecoinComponents.Clipboard 1.0
+import "../components" as mkecoinComponents
 
 Rectangle {
     id: root
@@ -40,10 +40,10 @@ Rectangle {
     // TODO: implement without hardcoding sizes
     width: 580
     height: 400
-    color: MKEcoinComponents.Style.blackTheme ? "black" : "white"
+    color: mkecoinComponents.Style.blackTheme ? "black" : "white"
     visible: false
     radius: 10
-    border.color: MKEcoinComponents.Style.blackTheme ? Qt.rgba(255, 255, 255, 0.25) : Qt.rgba(0, 0, 0, 0.25)
+    border.color: mkecoinComponents.Style.blackTheme ? Qt.rgba(255, 255, 255, 0.25) : Qt.rgba(0, 0, 0, 0.25)
     border.width: 1
     Keys.enabled: true
     Keys.onEscapePressed: {
@@ -80,7 +80,7 @@ Rectangle {
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignCenter
 
-            MKEcoinComponents.Label {
+            mkecoinComponents.Label {
                 fontSize: 18
                 fontFamily: "Arial"
                 horizontalAlignment: Text.AlignHCenter
@@ -108,7 +108,7 @@ Rectangle {
             }
         }
 
-        MKEcoinComponents.LineEditMulti {
+        mkecoinComponents.LineEditMulti {
             visible: !appWindow.viewOnly
             Layout.leftMargin: 25
             Layout.rightMargin: 25
@@ -121,7 +121,7 @@ Rectangle {
             fontSize: 16
         }
 
-        MKEcoinComponents.LineEditMulti {
+        mkecoinComponents.LineEditMulti {
             visible: appWindow.viewOnly
             Layout.leftMargin: 25
             borderDisabled: true
@@ -140,7 +140,7 @@ Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: 50
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: viewProgressButton
                 visible: !appWindow.viewOnly
                 text: qsTr("View progress") + translationManager.emptyString;
@@ -154,7 +154,7 @@ Rectangle {
                 }
             }
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: openFolderButton
                 visible: appWindow.viewOnly
                 text: qsTr("Open folder") + translationManager.emptyString;
@@ -165,7 +165,7 @@ Rectangle {
                 }
             }
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: doneButton
                 text: qsTr("Done") + translationManager.emptyString;
                 width: 200

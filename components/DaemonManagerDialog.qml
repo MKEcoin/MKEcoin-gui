@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Window {
     id: root
@@ -52,7 +52,7 @@ Window {
     // TODO: implement without hardcoding sizes
     width: 480
     height: 200
-    color: MKEcoinComponents.Style.middlePanelBackgroundColor
+    color: mkecoinComponents.Style.middlePanelBackgroundColor
 
     // Make window draggable
     MouseArea {
@@ -90,14 +90,14 @@ Window {
                 }
             }
 
-            MKEcoinComponents.TextPlain {
+            mkecoinComponents.TextPlain {
                 text: qsTr("Starting local node in %1 seconds").arg(countDown) + translationManager.emptyString;
                 font.pixelSize: 18
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
                 themeTransition: false
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
             }
 
         }
@@ -107,7 +107,7 @@ Window {
             spacing: 60
             Layout.alignment: Qt.AlignHCenter
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: okButton
                 visible:false
                 fontSize: 14
@@ -121,7 +121,7 @@ Window {
                 }
             }
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: cancelButton
                 fontSize: 14
                 text: qsTr("Use custom settings") + translationManager.emptyString

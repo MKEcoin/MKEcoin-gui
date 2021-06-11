@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015, The MKEcoin Project
+// Copyright (c) 2014-2015, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -30,26 +30,26 @@ import QtQuick.Controls 2.0
 import QtQuick 2.9
 
 import "../js/TxUtils.js" as TxUtils
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 TextArea {
     property int fontSize: 18
     property bool fontBold: false
-    property string fontColor: MKEcoinComponents.Style.defaultFontColor
+    property string fontColor: mkecoinComponents.Style.defaultFontColor
 
     property bool mouseSelection: true
     property bool error: false
     property bool addressValidation: false
 
     id: textArea
-    font.family: MKEcoinComponents.Style.fontRegular.name
+    font.family: mkecoinComponents.Style.fontRegular.name
     color: fontColor
     font.pixelSize: fontSize
     font.bold: fontBold
     horizontalAlignment: TextInput.AlignLeft
     selectByMouse: mouseSelection
-    selectionColor: MKEcoinComponents.Style.textSelectionColor
-    selectedTextColor: MKEcoinComponents.Style.textSelectedColor
+    selectionColor: mkecoinComponents.Style.textSelectionColor
+    selectedTextColor: mkecoinComponents.Style.textSelectedColor
 
     property int minimumHeight: 100
     height: contentHeight > minimumHeight ? contentHeight : minimumHeight
@@ -57,7 +57,7 @@ TextArea {
     onTextChanged: {
         if(addressValidation){
             // js replacement for `RegExpValidator { regExp: /[0-9A-Fa-f]{95}/g }`
-            if (textArea.text.startsWith("MKEcoin:")) {
+            if (textArea.text.startsWith("mkecoin:")) {
                 error = false;
                 return;
             }
@@ -69,7 +69,7 @@ TextArea {
         }
     }
 
-    MKEcoinComponents.ContextMenu {
+    mkecoinComponents.ContextMenu {
         cursorShape: Qt.IBeamCursor
         onPaste: {
             textArea.clear();

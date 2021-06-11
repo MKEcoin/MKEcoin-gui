@@ -1,11 +1,11 @@
 import QtQuick 2.9
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 TextEdit {
-    color: MKEcoinComponents.Style.defaultFontColor
-    font.family: MKEcoinComponents.Style.fontRegular.name
-    selectionColor: MKEcoinComponents.Style.textSelectionColor
+    color: mkecoinComponents.Style.defaultFontColor
+    font.family: mkecoinComponents.Style.fontRegular.name
+    selectionColor: mkecoinComponents.Style.textSelectionColor
     wrapMode: Text.Wrap
     readOnly: true
     selectByMouse: true

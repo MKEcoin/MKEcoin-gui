@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -32,7 +32,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
 import "../js/Utils.js" as Utils
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 GridLayout {
     columns: 2
@@ -48,15 +48,15 @@ GridLayout {
 
     // TODO: LEGACY; remove these placeHolder variables when
     // the wizards get redesigned to the black-theme
-    property string placeholderFontFamily: MKEcoinComponents.Style.fontRegular.name
+    property string placeholderFontFamily: mkecoinComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 15
-    property string placeholderColor: MKEcoinComponents.Style.defaultFontColor
+    property string placeholderColor: mkecoinComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.35
     property int labelFontSize: 14
 
     property string lineEditBackgroundColor: "transparent"
-    property string lineEditFontColor: MKEcoinComponents.Style.defaultFontColor
+    property string lineEditFontColor: mkecoinComponents.Style.defaultFontColor
     property bool lineEditFontBold: false
     property int lineEditFontSize: 15
 

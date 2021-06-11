@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -31,7 +31,7 @@ import QtQuick 2.9
 import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Item {
     id: item
@@ -47,10 +47,10 @@ Item {
 
     property alias placeholderText: placeholderLabel.text
     property bool placeholderCenter: false
-    property string placeholderFontFamily: MKEcoinComponents.Style.fontRegular.name
+    property string placeholderFontFamily: mkecoinComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 18
-    property string placeholderColor: MKEcoinComponents.Style.defaultFontColor
+    property string placeholderColor: mkecoinComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.35
     property real placeholderLeftMargin: {
         if (placeholderCenter) {
@@ -74,15 +74,15 @@ Item {
     property bool borderDisabled: false
     property string borderColor: {
         if(error && input.text !== ""){
-            return MKEcoinComponents.Style.inputBorderColorInvalid;
+            return mkecoinComponents.Style.inputBorderColorInvalid;
         } else if(input.activeFocus){
-            return MKEcoinComponents.Style.inputBorderColorActive;
+            return mkecoinComponents.Style.inputBorderColorActive;
         } else {
-            return MKEcoinComponents.Style.inputBorderColorInActive;
+            return mkecoinComponents.Style.inputBorderColorInActive;
         }
     }
 
-    property string fontFamily: MKEcoinComponents.Style.fontRegular.name
+    property string fontFamily: mkecoinComponents.Style.fontRegular.name
     property int fontSize: 18
     property bool fontBold: false
     property alias fontColor: input.color
@@ -152,15 +152,15 @@ Item {
         }
     }
 
-    MKEcoinComponents.TextPlain {
+    mkecoinComponents.TextPlain {
         id: inputLabel
         anchors.top: parent.top
         anchors.left: parent.left
-        font.family: MKEcoinComponents.Style.fontRegular.name
+        font.family: mkecoinComponents.Style.fontRegular.name
         font.pixelSize: labelFontSize
         font.bold: labelFontBold
         textFormat: Text.RichText
-        color: MKEcoinComponents.Style.defaultFontColor
+        color: mkecoinComponents.Style.defaultFontColor
         onLinkActivated: item.labelLinkActivated()
 
         MouseArea {
@@ -170,7 +170,7 @@ Item {
         }
     }
 
-    MKEcoinComponents.LabelButton {
+    mkecoinComponents.LabelButton {
         id: copyButtonId
         text: qsTr("Copy") + translationManager.emptyString
         anchors.right: parent.right
@@ -192,7 +192,7 @@ Item {
         width: parent.width
         clip: true
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: placeholderLabel
             visible: input.text ? false : true
             anchors.verticalCenter: parent.verticalCenter
@@ -212,7 +212,7 @@ Item {
         Rectangle {
             anchors.fill: parent
             anchors.topMargin: 1
-            color: item.enabled ? "transparent" : MKEcoinComponents.Style.inputBoxBackgroundDisabled
+            color: item.enabled ? "transparent" : mkecoinComponents.Style.inputBoxBackgroundDisabled
         }
 
         Rectangle {
@@ -232,11 +232,11 @@ Item {
             anchors.topMargin: 8
             anchors.left: parent.left
             anchors.leftMargin: 12
-            source: "qrc:///images/MKEcoinIcon-28x28.png"
+            source: "qrc:///images/mkecoinIcon-28x28.png"
             visible: false
         }
 
-        MKEcoinComponents.Input {
+        mkecoinComponents.Input {
             id: input
             anchors.fill: parent
             anchors.leftMargin: inlineIcon.visible ? 44 : 0
@@ -254,7 +254,7 @@ Item {
             bottomPadding: inputPadding
             echoMode: isPasswordHidden() ? TextInput.Password : TextInput.Normal
 
-            MKEcoinComponents.Label {
+            mkecoinComponents.Label {
                 visible: password || passwordLinked
                 fontSize: 20
                 text: isPasswordHidden() ? FontAwesome.eye : FontAwesome.eyeSlash

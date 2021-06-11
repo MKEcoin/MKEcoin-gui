@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -29,8 +29,8 @@
 import QtQuick 2.9
 import QtGraphicalEffects 1.0
 
-import "../components" as MKEcoinComponents
-import "effects/" as MKEcoinEffects
+import "../components" as mkecoinComponents
+import "effects/" as mkecoinEffects
 
 Rectangle {
     id: button
@@ -72,8 +72,8 @@ Rectangle {
         start: Qt.point(width, 0)
         end: Qt.point(0, 0)
         gradient: Gradient {
-            GradientStop { position: 0.0; color: MKEcoinComponents.Style.menuButtonGradientStart }
-            GradientStop { position: 1.0; color: MKEcoinComponents.Style.menuButtonGradientStop }
+            GradientStop { position: 0.0; color: mkecoinComponents.Style.menuButtonGradientStart }
+            GradientStop { position: 1.0; color: mkecoinComponents.Style.menuButtonGradientStop }
         }
         opacity: button.checked ? 1 : 0.3
     }
@@ -82,7 +82,7 @@ Rectangle {
     Rectangle {
         visible: !isOpenGL && (button.checked || buttonArea.containsMouse)
         anchors.fill: parent
-        color: MKEcoinComponents.Style.menuButtonFallbackBackgroundColor
+        color: mkecoinComponents.Style.menuButtonFallbackBackgroundColor
         opacity: button.checked ? 1 : 0.3
     }
 
@@ -92,14 +92,14 @@ Rectangle {
         anchors.leftMargin: 20
         height: parent.height
         width: 2
-        color: button.checked ? MKEcoinComponents.Style.buttonBackgroundColor : "transparent"
+        color: button.checked ? mkecoinComponents.Style.buttonBackgroundColor : "transparent"
 
         // button text
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: label
-            color: MKEcoinComponents.Style.menuButtonTextColor
-            themeTransitionBlackColor: MKEcoinComponents.Style._b_menuButtonTextColor
-            themeTransitionWhiteColor: MKEcoinComponents.Style._w_menuButtonTextColor
+            color: mkecoinComponents.Style.menuButtonTextColor
+            themeTransitionBlackColor: mkecoinComponents.Style._b_menuButtonTextColor
+            themeTransitionWhiteColor: mkecoinComponents.Style._w_menuButtonTextColor
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.right
             anchors.leftMargin: button.getOffset() + 8
@@ -109,26 +109,26 @@ Rectangle {
     }
 
     // menu button right arrow
-    MKEcoinEffects.ImageMask {
+    mkecoinEffects.ImageMask {
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: parent.getOffset()
         anchors.right: parent.right
         anchors.rightMargin: 20
         height: 14
         width: 8
-        image: MKEcoinComponents.Style.menuButtonImageRightSource
-        color: button.checked ? MKEcoinComponents.Style.menuButtonImageRightColorActive : MKEcoinComponents.Style.menuButtonImageRightColor
+        image: mkecoinComponents.Style.menuButtonImageRightSource
+        color: button.checked ? mkecoinComponents.Style.menuButtonImageRightColorActive : mkecoinComponents.Style.menuButtonImageRightColor
         opacity: button.checked ? 0.8 : 0.25
     }
 
-    MKEcoinComponents.TextPlain {
+    mkecoinComponents.TextPlain {
         id: symbolText
         anchors.right: parent.right
         anchors.rightMargin: 44
         anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: 12
         font.bold: true
-        color: MKEcoinComponents.Style.menuButtonTextColor
+        color: mkecoinComponents.Style.menuButtonTextColor
         visible: appWindow.ctrlPressed
         themeTransition: false
     }

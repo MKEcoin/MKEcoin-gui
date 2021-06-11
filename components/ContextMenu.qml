@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 
 import FontAwesome 1.0
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 MouseArea {
     signal paste()
@@ -19,10 +19,10 @@ MouseArea {
         id: contextMenu
 
         background: Rectangle {
-            border.color: MKEcoinComponents.Style.buttonBackgroundColorDisabledHover
+            border.color: mkecoinComponents.Style.buttonBackgroundColorDisabledHover
             border.width: 1
             radius: 2
-            color: MKEcoinComponents.Style.buttonBackgroundColorDisabled
+            color: mkecoinComponents.Style.buttonBackgroundColorDisabled
         }
 
         padding: 1
@@ -30,7 +30,7 @@ MouseArea {
         x: root.mouseX
         y: root.mouseY
 
-        MKEcoinComponents.ContextMenuItem {
+        mkecoinComponents.ContextMenuItem {
             enabled: root.parent.canPaste === true
             glyphIcon: FontAwesome.paste
             onTriggered: root.paste()

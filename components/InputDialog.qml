@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Item {
     id: root
@@ -79,33 +79,33 @@ Item {
                 Layout.fillWidth: true
 
                 font.pixelSize: 16
-                font.family: MKEcoinComponents.Style.fontLight.name
+                font.family: mkecoinComponents.Style.fontLight.name
 
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
             }
 
-            MKEcoinComponents.Input {
+            mkecoinComponents.Input {
                 id : input
                 focus: true
                 Layout.topMargin: 6
                 Layout.fillWidth: true
                 horizontalAlignment: TextInput.AlignLeft
                 verticalAlignment: TextInput.AlignVCenter
-                font.family: MKEcoinComponents.Style.fontLight.name
+                font.family: mkecoinComponents.Style.fontLight.name
                 font.pixelSize: 24
                 KeyNavigation.tab: okButton
                 bottomPadding: 10
                 leftPadding: 10
                 topPadding: 10
-                color: MKEcoinComponents.Style.defaultFontColor
-                selectionColor: MKEcoinComponents.Style.textSelectionColor
-                selectedTextColor: MKEcoinComponents.Style.textSelectedColor
+                color: mkecoinComponents.Style.defaultFontColor
+                selectionColor: mkecoinComponents.Style.textSelectionColor
+                selectedTextColor: mkecoinComponents.Style.textSelectedColor
 
                 background: Rectangle {
                     radius: 2
-                    border.color: MKEcoinComponents.Style.inputBorderColorActive
+                    border.color: mkecoinComponents.Style.inputBorderColorActive
                     border.width: 1
-                    color: MKEcoinComponents.Style.blackTheme ? "black" : "#A9FFFFFF"
+                    color: mkecoinComponents.Style.blackTheme ? "black" : "#A9FFFFFF"
                 }
 
                 Keys.enabled: root.visible
@@ -127,7 +127,7 @@ Item {
                 Layout.topMargin: 16
                 Layout.alignment: Qt.AlignRight
 
-                MKEcoinComponents.StandardButton {
+                mkecoinComponents.StandardButton {
                     id: cancelButton
                     small: true
                     width: 120
@@ -139,7 +139,7 @@ Item {
                         root.rejected()
                     }
                 }
-                MKEcoinComponents.StandardButton {
+                mkecoinComponents.StandardButton {
                     id: okButton
                     small: true
                     width: 120

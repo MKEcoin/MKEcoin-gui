@@ -1,4 +1,4 @@
-// Copyright (c) 2020, The MKEcoin Project
+// Copyright (c) 2020, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -31,7 +31,7 @@ import QtQuick.Layouts 1.3
 
 import FontAwesome 1.0
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Item {
     implicitHeight: layout.height
@@ -42,16 +42,16 @@ Item {
         opacity: mouseArea.containsMouse ? 1 : 0.85
         spacing: 10
 
-        MKEcoinComponents.Label {
+        mkecoinComponents.Label {
             Layout.bottomMargin: 5
-            fontColor: MKEcoinComponents.Style.defaultFontColor
+            fontColor: mkecoinComponents.Style.defaultFontColor
             fontFamily: FontAwesome.fontFamilySolid
             fontSize: 26
             styleName: "Solid"
             text: FontAwesome.language
         }
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             font.pixelSize: 14
             text: persistentSettings.language
         }

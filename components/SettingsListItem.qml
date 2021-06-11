@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import FontAwesome 1.0
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 ColumnLayout {
     id: settingsListItem
@@ -28,8 +28,8 @@ ColumnLayout {
             anchors.left: parent.left
             anchors.right: parent.right
             height: 1
-            color: MKEcoinComponents.Style.dividerColor
-            opacity: MKEcoinComponents.Style.dividerOpacity
+            color: mkecoinComponents.Style.dividerColor
+            opacity: mkecoinComponents.Style.dividerOpacity
         }
 
         Rectangle {
@@ -51,25 +51,25 @@ ColumnLayout {
                 anchors.leftMargin: 16
                 anchors.verticalCenter: parent.verticalCenter
 
-                MKEcoinComponents.Label {
+                mkecoinComponents.Label {
                     id: iconLabel
                     fontSize: 32
                     fontFamily: FontAwesome.fontFamilySolid
                     anchors.centerIn: parent
-                    fontColor: MKEcoinComponents.Style.defaultFontColor
+                    fontColor: mkecoinComponents.Style.defaultFontColor
                     styleName: "Solid"
                 }
             }
 
-            MKEcoinComponents.TextPlain {
+            mkecoinComponents.TextPlain {
                 id: header
                 anchors.left: icon.right
                 anchors.leftMargin: 16
                 anchors.top: parent.top
-                color: MKEcoinComponents.Style.defaultFontColor
-                opacity: MKEcoinComponents.Style.blackTheme ? 1.0 : 0.8
+                color: mkecoinComponents.Style.defaultFontColor
+                opacity: mkecoinComponents.Style.blackTheme ? 1.0 : 0.8
                 font.bold: true
-                font.family: MKEcoinComponents.Style.fontRegular.name
+                font.family: mkecoinComponents.Style.fontRegular.name
                 font.pixelSize: 16
             }
 
@@ -79,8 +79,8 @@ ColumnLayout {
                 anchors.topMargin: 4
                 anchors.left: icon.right
                 anchors.leftMargin: 16
-                color: MKEcoinComponents.Style.dimmedFontColor
-                font.family: MKEcoinComponents.Style.fontRegular.name
+                color: mkecoinComponents.Style.dimmedFontColor
+                font.family: mkecoinComponents.Style.fontRegular.name
                 font.pixelSize: 15
                 horizontalAlignment: TextInput.AlignLeft
                 wrapMode: Text.WordWrap;
@@ -96,8 +96,8 @@ ColumnLayout {
             anchors.left: parent.left
             anchors.right: parent.right
             height: 1
-            color: MKEcoinComponents.Style.dividerColor
-            opacity: MKEcoinComponents.Style.dividerOpacity
+            color: mkecoinComponents.Style.dividerColor
+            opacity: mkecoinComponents.Style.dividerOpacity
             visible: settingsListItem.isLast
         }
 
@@ -105,7 +105,7 @@ ColumnLayout {
             cursorShape: Qt.PointingHandCursor
             anchors.fill: parent
             hoverEnabled: true
-            onEntered: root.color = MKEcoinComponents.Style.titleBarButtonHoverColor
+            onEntered: root.color = mkecoinComponents.Style.titleBarButtonHoverColor
             onExited: root.color = "transparent"
             onClicked: {
                 settingsListItem.clicked()

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -33,8 +33,8 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 
-import "../components" as MKEcoinComponents
-import "effects/" as MKEcoinEffects
+import "../components" as mkecoinComponents
+import "effects/" as mkecoinEffects
 
 Rectangle {
     id: root
@@ -58,15 +58,15 @@ Rectangle {
     signal closeCallback();
 
     // background
-    MKEcoinEffects.GradientBackground {
+    mkecoinEffects.GradientBackground {
         anchors.fill: parent
-        fallBackColor: MKEcoinComponents.Style.middlePanelBackgroundColor
-        initialStartColor: MKEcoinComponents.Style.middlePanelBackgroundGradientStart
-        initialStopColor: MKEcoinComponents.Style.middlePanelBackgroundGradientStop
-        blackColorStart: MKEcoinComponents.Style._b_middlePanelBackgroundGradientStart
-        blackColorStop: MKEcoinComponents.Style._b_middlePanelBackgroundGradientStop
-        whiteColorStart: MKEcoinComponents.Style._w_middlePanelBackgroundGradientStart
-        whiteColorStop: MKEcoinComponents.Style._w_middlePanelBackgroundGradientStop
+        fallBackColor: mkecoinComponents.Style.middlePanelBackgroundColor
+        initialStartColor: mkecoinComponents.Style.middlePanelBackgroundGradientStart
+        initialStopColor: mkecoinComponents.Style.middlePanelBackgroundGradientStop
+        blackColorStart: mkecoinComponents.Style._b_middlePanelBackgroundGradientStart
+        blackColorStop: mkecoinComponents.Style._b_middlePanelBackgroundGradientStop
+        whiteColorStart: mkecoinComponents.Style._w_middlePanelBackgroundGradientStart
+        whiteColorStop: mkecoinComponents.Style._w_middlePanelBackgroundGradientStop
         start: Qt.point(0, 0)
         end: Qt.point(height, width)
     }
@@ -112,11 +112,11 @@ Rectangle {
             Layout.topMargin: 14
             Layout.fillWidth: true
 
-            MKEcoinComponents.Label {
+            mkecoinComponents.Label {
                 id: dialogTitle
                 fontSize: 18
                 fontFamily: "Arial"
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
             }
         }
 
@@ -138,13 +138,13 @@ Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     renderType: Text.QtRendering
-                    font.family: MKEcoinComponents.Style.fontLight.name
+                    font.family: mkecoinComponents.Style.fontLight.name
                     textFormat: TextEdit.AutoText
                     readOnly: true
                     font.pixelSize: 14
                     selectByMouse: false
                     wrapMode: TextEdit.Wrap
-                    color: MKEcoinComponents.Style.defaultFontColor
+                    color: mkecoinComponents.Style.defaultFontColor
 
                     MouseArea {
                         anchors.fill: parent
@@ -169,7 +169,7 @@ Rectangle {
             spacing: 60
             Layout.alignment: Qt.AlignHCenter
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: cancelButton
                 text: qsTr("Cancel") + translationManager.emptyString
                 onClicked: {
@@ -178,7 +178,7 @@ Rectangle {
                 }
             }
 
-            MKEcoinComponents.StandardButton {
+            mkecoinComponents.StandardButton {
                 id: okButton
                 text: qsTr("OK") + translationManager.emptyString
                 KeyNavigation.tab: cancelButton
@@ -199,12 +199,12 @@ Rectangle {
         height: 48
         color: "transparent"
 
-        MKEcoinEffects.ImageMask {
+        mkecoinEffects.ImageMask {
             anchors.centerIn: parent
             width: 16
             height: 16
-            image: MKEcoinComponents.Style.titleBarCloseSource
-            color: MKEcoinComponents.Style.defaultFontColor
+            image: mkecoinComponents.Style.titleBarCloseSource
+            color: mkecoinComponents.Style.defaultFontColor
             opacity: 0.75
         }
 
@@ -223,7 +223,7 @@ Rectangle {
     // window borders
     Rectangle{
         width: 1
-        color: MKEcoinComponents.Style.grey
+        color: mkecoinComponents.Style.grey
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -231,7 +231,7 @@ Rectangle {
 
     Rectangle{
         width: 1
-        color: MKEcoinComponents.Style.grey
+        color: mkecoinComponents.Style.grey
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -239,7 +239,7 @@ Rectangle {
 
     Rectangle{
         height: 1
-        color: MKEcoinComponents.Style.grey
+        color: mkecoinComponents.Style.grey
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.right: parent.right
@@ -247,7 +247,7 @@ Rectangle {
 
     Rectangle{
         height: 1
-        color: MKEcoinComponents.Style.grey
+        color: mkecoinComponents.Style.grey
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.right: parent.right

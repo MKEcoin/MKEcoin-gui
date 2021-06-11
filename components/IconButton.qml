@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -27,16 +27,23 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.9
-import "../components" as MKEcoinComponents
-import "../components/effects" as MKEcoinEffects
+import "../components" as mkecoinComponents
+import "../components/effects" as mkecoinEffects
 
-MKEcoinEffects.ImageMask {
+mkecoinEffects.ImageMask {
     id: button
     z: 666
-    color: MKEcoinComponents.Style.defaultFontColor
+    color: mkecoinComponents.Style.defaultFontColor
     image: ""
 
+    property alias tooltip: tooltip.text
     signal clicked(var mouse)
+
+    mkecoinComponents.Tooltip {
+        id: tooltip
+        anchors.fill: parent
+        tooltipLeft: true
+    }
 
     MouseArea {
         anchors.fill: parent
@@ -44,11 +51,13 @@ MKEcoinEffects.ImageMask {
         cursorShape: Qt.PointingHandCursor
 
         onEntered: {
+            tooltip.text ? tooltip.tooltipPopup.open() : ""
             button.width = button.width + 2
             button.height = button.height + 2
         }
 
         onExited: {
+            tooltip.text ? tooltip.tooltipPopup.close() : ""
             button.width = button.width - 2
             button.height = button.height - 2
         }

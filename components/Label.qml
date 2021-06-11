@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -29,18 +29,19 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Item {
     id: item
     property alias text: label.text
     property alias tooltip: label.tooltip
+    property alias tooltipIconVisible: label.tooltipIconVisible
     property alias color: label.color
     property int textFormat: Text.PlainText
     property string tipText: ""
     property int fontSize: 16
     property bool fontBold: false
-    property string fontColor: MKEcoinComponents.Style.defaultFontColor
+    property string fontColor: mkecoinComponents.Style.defaultFontColor
     property string fontFamily: ""
     property alias wrapMode: label.wrapMode
     property alias horizontalAlignment: label.horizontalAlignment
@@ -53,7 +54,7 @@ Item {
     width: label.width
     Layout.topMargin: 10
 
-    MKEcoinComponents.TextPlain {
+    mkecoinComponents.TextPlain {
         id: label
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 2
@@ -62,7 +63,7 @@ Item {
             if(fontFamily){
                 return fontFamily;
             } else {
-                return MKEcoinComponents.Style.fontRegular.name;
+                return mkecoinComponents.Style.fontRegular.name;
             }
         }
         font.pixelSize: fontSize

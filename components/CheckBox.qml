@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -30,8 +30,8 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import FontAwesome 1.0
 
-import "." as MKEcoinComponents
-import "effects/" as MKEcoinEffects
+import "." as mkecoinComponents
+import "effects/" as mkecoinEffects
 
 Item {
     id: checkBox
@@ -48,6 +48,8 @@ Item {
     property int fontSize: 14
     property alias fontColor: label.color
     property bool iconOnTheLeft: true
+    property alias tooltipIconVisible: label.tooltipIconVisible
+    property alias tooltip: label.tooltip
     signal clicked()
 
     height: 25
@@ -80,22 +82,22 @@ Item {
                 visible: checkBox.border
                 anchors.fill: parent
                 radius: 3
-                color: checkBox.enabled ? "transparent" : MKEcoinComponents.Style.inputBoxBackgroundDisabled
+                color: checkBox.enabled ? "transparent" : mkecoinComponents.Style.inputBoxBackgroundDisabled
                 border.color:
                     if (checkBox.activeFocus) {
-                        return MKEcoinComponents.Style.inputBorderColorActive;
+                        return mkecoinComponents.Style.inputBorderColorActive;
                     } else {
-                        return MKEcoinComponents.Style.inputBorderColorInActive;
+                        return mkecoinComponents.Style.inputBorderColorInActive;
                     }
             }
 
-            MKEcoinEffects.ImageMask {
+            mkecoinEffects.ImageMask {
                 id: img
                 visible: checkBox.checked || checkBox.uncheckedIcon != ""
                 anchors.centerIn: parent
                 width: checkBox.imgWidth
                 height: checkBox.imgHeight
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
                 fontAwesomeFallbackIcon: checkBox.fontAwesomeIcons ? getIcon() : FontAwesome.plus
                 fontAwesomeFallbackSize: 14
                 image: checkBox.fontAwesomeIcons ? "" : getIcon()
@@ -108,11 +110,11 @@ Item {
             }
         }
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: label
-            font.family: MKEcoinComponents.Style.fontRegular.name
+            font.family: mkecoinComponents.Style.fontRegular.name
             font.pixelSize: checkBox.fontSize
-            color: MKEcoinComponents.Style.defaultFontColor
+            color: mkecoinComponents.Style.defaultFontColor
             textFormat: Text.RichText
             wrapMode: Text.NoWrap
             visible: text != ""
@@ -121,7 +123,10 @@ Item {
 
     MouseArea {
         anchors.fill: parent
+        hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
+        onEntered: !label.tooltipIconVisible && label.tooltip ? label.tooltipPopup.open() : ""
+        onExited:  !label.tooltipIconVisible && label.tooltip ? label.tooltipPopup.close() : ""
         onClicked: {
             toggle()
         }

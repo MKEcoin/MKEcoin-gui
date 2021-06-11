@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -32,8 +32,8 @@ import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.2
 
 import FontAwesome 1.0
-import "." as MKEcoinComponents
-import "effects/" as MKEcoinEffects
+import "." as mkecoinComponents
+import "effects/" as mkecoinEffects
 
 Rectangle {
     id: root
@@ -72,16 +72,16 @@ Rectangle {
         }
     ]
 
-    MKEcoinEffects.GradientBackground {
+    mkecoinEffects.GradientBackground {
         anchors.fill: parent
         duration: 300
-        fallBackColor: MKEcoinComponents.Style.middlePanelBackgroundColor
-        initialStartColor: MKEcoinComponents.Style.titleBarBackgroundGradientStart
-        initialStopColor: MKEcoinComponents.Style.titleBarBackgroundGradientStop
-        blackColorStart: MKEcoinComponents.Style._b_titleBarBackgroundGradientStart
-        blackColorStop: MKEcoinComponents.Style._b_titleBarBackgroundGradientStop
-        whiteColorStart: MKEcoinComponents.Style._w_titleBarBackgroundGradientStart
-        whiteColorStop: MKEcoinComponents.Style._w_titleBarBackgroundGradientStop
+        fallBackColor: mkecoinComponents.Style.middlePanelBackgroundColor
+        initialStartColor: mkecoinComponents.Style.titleBarBackgroundGradientStart
+        initialStopColor: mkecoinComponents.Style.titleBarBackgroundGradientStop
+        blackColorStart: mkecoinComponents.Style._b_titleBarBackgroundGradientStart
+        blackColorStop: mkecoinComponents.Style._b_titleBarBackgroundGradientStop
+        whiteColorStart: mkecoinComponents.Style._w_titleBarBackgroundGradientStart
+        whiteColorStop: mkecoinComponents.Style._w_titleBarBackgroundGradientStop
         start: Qt.point(width, 0)
         end: Qt.point(0, 0)
     }
@@ -103,19 +103,31 @@ Rectangle {
                 text: FontAwesome.signOutAlt
                 font.family: FontAwesome.fontFamilySolid
                 font.pixelSize: 16
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
                 font.styleName: "Solid"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 opacity: 0.75
             }
 
+            mkecoinComponents.Tooltip {
+                id: btnCloseWalletTooltip
+                anchors.fill: parent
+                text: qsTr("Close this wallet and return to main menu") + translationManager.emptyString
+            }
+
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.color = MKEcoinComponents.Style.titleBarButtonHoverColor
-                onExited: parent.color = "transparent"
+                onEntered: {
+                    parent.color = mkecoinComponents.Style.titleBarButtonHoverColor
+                    btnCloseWalletTooltip.tooltipPopup.open()
+                }
+                onExited: {
+                    parent.color = "transparent"
+                    btnCloseWalletTooltip.tooltipPopup.close()
+                }
                 onClicked: root.closeWalletClicked(leftPanel.visible)
             }
         }
@@ -131,19 +143,31 @@ Rectangle {
                 text: FontAwesome.globe
                 font.family: FontAwesome.fontFamilySolid
                 font.pixelSize: 16
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
                 font.styleName: "Solid"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 opacity: 0.75
             }
 
+            mkecoinComponents.Tooltip {
+                id: btnLanguageToggleTooltip
+                anchors.fill: parent
+                text: qsTr("Change language") + translationManager.emptyString
+            }
+
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.color = MKEcoinComponents.Style.titleBarButtonHoverColor
-                onExited: parent.color = "transparent"
+                onEntered: {
+                    parent.color = mkecoinComponents.Style.titleBarButtonHoverColor
+                    btnLanguageToggleTooltip.tooltipPopup.open()
+                }
+                onExited: {
+                    parent.color = "transparent"
+                    btnLanguageToggleTooltip.tooltipPopup.close()
+                }
                 onClicked: root.languageClicked()
             }
         }
@@ -156,23 +180,35 @@ Rectangle {
 
             Text {
                 text: FontAwesome.moonO
-                font.family: MKEcoinComponents.Style.blackTheme ? FontAwesome.fontFamilySolid : FontAwesome.fontFamily
-                font.styleName: MKEcoinComponents.Style.blackTheme ? "Solid" : "Regular"
+                font.family: mkecoinComponents.Style.blackTheme ? FontAwesome.fontFamilySolid : FontAwesome.fontFamily
+                font.styleName: mkecoinComponents.Style.blackTheme ? "Solid" : "Regular"
                 font.pixelSize: 15
-                color: MKEcoinComponents.Style.defaultFontColor
+                color: mkecoinComponents.Style.defaultFontColor
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 opacity: 0.75
+            }
+
+            mkecoinComponents.Tooltip {
+                id: btnSwitchThemeTooltip
+                anchors.fill: parent
+                text: mkecoinComponents.Style.blackTheme ? qsTr("Switch to light theme") : qsTr("Switch to dark theme") + translationManager.emptyString
             }
 
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.color = MKEcoinComponents.Style.titleBarButtonHoverColor
-                onExited: parent.color = "transparent"
+                onEntered: {
+                    parent.color = mkecoinComponents.Style.titleBarButtonHoverColor
+                    btnSwitchThemeTooltip.tooltipPopup.open()
+                }
+                onExited: {
+                    parent.color = "transparent"
+                    btnSwitchThemeTooltip.tooltipPopup.close()
+                }
                 onClicked: {
-                    MKEcoinComponents.Style.blackTheme = !MKEcoinComponents.Style.blackTheme;
+                    mkecoinComponents.Style.blackTheme = !mkecoinComponents.Style.blackTheme;
                 }
             }
         }
@@ -180,13 +216,13 @@ Rectangle {
         Item {
             // make dummy space when hiding buttons when titlebar
             // state is 'essentials' in order for the
-            // MKEcoin logo to still be centered
+            // mkecoin logo to still be centered
             Layout.preferredWidth: parent.height * 2  // amount of buttons we hide
             Layout.preferredHeight: parent.height
             visible: root.state == "essentials"
         }
 
-        // MKEcoin logo
+        // mkecoin logo
         Item {
             visible: walletName.length === 0
             Layout.fillWidth: true
@@ -200,16 +236,16 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
 
-                source: MKEcoinComponents.Style.titleBarLogoSource
+                source: mkecoinComponents.Style.titleBarLogoSource
                 visible: {
                     if(!isOpenGL) return true;
-                    if(!MKEcoinComponents.Style.blackTheme) return true;
+                    if(!mkecoinComponents.Style.blackTheme) return true;
                     return false;
                 }
             }
 
             Colorize {
-                visible: isOpenGL && MKEcoinComponents.Style.blackTheme
+                visible: isOpenGL && mkecoinComponents.Style.blackTheme
                 anchors.fill: imgLogo
                 source: imgLogo
                 saturation: 0.0
@@ -221,7 +257,7 @@ Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: parent.height
 
-            MKEcoinComponents.TextPlain {
+            mkecoinComponents.TextPlain {
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -239,17 +275,17 @@ Rectangle {
             Layout.preferredWidth: parent.height
             Layout.preferredHeight: parent.height
 
-            MKEcoinEffects.ImageMask {
+            mkecoinEffects.ImageMask {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 18
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: 3
                 width: 15
-                image: MKEcoinComponents.Style.titleBarMinimizeSource
-                color: MKEcoinComponents.Style.defaultFontColor
+                image: mkecoinComponents.Style.titleBarMinimizeSource
+                color: mkecoinComponents.Style.defaultFontColor
                 fontAwesomeFallbackIcon: FontAwesome.minus
                 fontAwesomeFallbackSize: 18
-                fontAwesomeFallbackOpacity: MKEcoinComponents.Style.blackTheme ? 0.8 : 0.6
+                fontAwesomeFallbackOpacity: mkecoinComponents.Style.blackTheme ? 0.8 : 0.6
                 opacity: 0.75
             }
 
@@ -257,7 +293,7 @@ Rectangle {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.color = MKEcoinComponents.Style.titleBarButtonHoverColor
+                onEntered: parent.color = mkecoinComponents.Style.titleBarButtonHoverColor
                 onExited: parent.color = "transparent"
                 onClicked: root.minimizeClicked();
             }
@@ -274,7 +310,7 @@ Rectangle {
             Image {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: MKEcoinComponents.Style.titleBarFullscreenSource
+                source: mkecoinComponents.Style.titleBarFullscreenSource
                 sourceSize.width: 16
                 sourceSize.height: 16
                 smooth: true
@@ -288,7 +324,7 @@ Rectangle {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.color = MKEcoinComponents.Style.titleBarButtonHoverColor
+                onEntered: parent.color = mkecoinComponents.Style.titleBarButtonHoverColor
                 onExited: parent.color = "transparent"
                 onClicked: root.maximizeClicked();
             }
@@ -301,16 +337,16 @@ Rectangle {
             Layout.preferredWidth: parent.height
             Layout.preferredHeight: parent.height
 
-            MKEcoinEffects.ImageMask {
+            mkecoinEffects.ImageMask {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: 16
                 width: 16
-                image: MKEcoinComponents.Style.titleBarCloseSource
-                color: MKEcoinComponents.Style.defaultFontColor
+                image: mkecoinComponents.Style.titleBarCloseSource
+                color: mkecoinComponents.Style.defaultFontColor
                 fontAwesomeFallbackIcon: FontAwesome.times
                 fontAwesomeFallbackSize: 21
-                fontAwesomeFallbackOpacity: MKEcoinComponents.Style.blackTheme ? 0.8 : 0.6
+                fontAwesomeFallbackOpacity: mkecoinComponents.Style.blackTheme ? 0.8 : 0.6
                 opacity: 0.75
             }
 
@@ -318,7 +354,7 @@ Rectangle {
                 anchors.fill: parent
                 hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
-                onEntered: parent.color = MKEcoinComponents.Style.titleBarButtonHoverColor
+                onEntered: parent.color = mkecoinComponents.Style.titleBarButtonHoverColor
                 onExited: parent.color = "transparent"
                 onClicked: root.closeClicked();
             }
@@ -330,13 +366,13 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        height: MKEcoinComponents.Style.blackTheme ? 1 : 1
-        color: MKEcoinComponents.Style.titleBarBackgroundBorderColor
+        height: mkecoinComponents.Style.blackTheme ? 1 : 1
+        color: mkecoinComponents.Style.titleBarBackgroundBorderColor
 
-        MKEcoinEffects.ColorTransition {
+        mkecoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MKEcoinComponents.Style._b_titleBarBackgroundBorderColor
-            whiteColor: MKEcoinComponents.Style._w_titleBarBackgroundBorderColor
+            blackColor: mkecoinComponents.Style._b_titleBarBackgroundBorderColor
+            whiteColor: mkecoinComponents.Style._w_titleBarBackgroundBorderColor
         }
     }
 

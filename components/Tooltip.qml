@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The MKEcoin Project
+// Copyright (c) 2021, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -31,19 +31,24 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
-import "." as MKEcoinComponents
+import "." as mkecoinComponents
 
 Rectangle {
     property alias text: tooltip.text
+    property alias tooltipPopup: popup
+    property bool tooltipIconVisible: false
+    property bool tooltipLeft: false
+    property bool tooltipBottom: tooltipIconVisible ? false : true
 
     color: "transparent"
-    height: icon.height
-    width: icon.width
+    height: tooltipIconVisible ? icon.height : parent.height
+    width: tooltipIconVisible ? icon.width : parent.width
     visible: text != ""
 
     Text {
         id: icon
-        color: MKEcoinComponents.Style.orange
+        visible: tooltipIconVisible
+        color: mkecoinComponents.Style.orange
         font.family: FontAwesome.fontFamily
         font.pixelSize: 10
         font.styleName: "Regular"
@@ -62,27 +67,40 @@ Rectangle {
         }
     }
 
-    Popup {
+    ToolTip {
         id: popup
+        height: tooltip.height + 20
 
         background: Rectangle {
-            border.color: MKEcoinComponents.Style.buttonInlineBackgroundColor
+            border.color: mkecoinComponents.Style.buttonInlineBackgroundColor
             border.width: 1
-            color: MKEcoinComponents.Style.titleBarBackgroundGradientStart
+            color: mkecoinComponents.Style.titleBarBackgroundGradientStart
             radius: 4
         }
         closePolicy: Popup.NoAutoClose
         padding: 10
-        x: icon.x + icon.width
-        y: icon.y - height
+        x: tooltipLeft
+            ? (tooltipIconVisible ? icon.x - icon.width : parent.x - tooltip.width - 20 + parent.width/2)
+            : (tooltipIconVisible ? icon.x + icon.width : parent.x + parent.width/2)
+        y: tooltipBottom
+            ? (tooltipIconVisible ? icon.y + height : parent.y + parent.height + 2)
+            : (tooltipIconVisible ? icon.y - height : parent.y - tooltip.height - 20)
+        enter: Transition {
+            NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; duration: 150 }
+        }
+
+        exit: Transition {
+            NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; duration: 150 }
+        }
+        delay: 200
 
         RowLayout {
             Text {
                 id: tooltip
                 Layout.maximumWidth: 350
                 width: contentWidth > Layout.maximumWidth ? Layout.maximumWidth : contentWidth
-                color: MKEcoinComponents.Style.defaultFontColor
-                font.family: MKEcoinComponents.Style.fontRegular.name
+                color: mkecoinComponents.Style.defaultFontColor
+                font.family: mkecoinComponents.Style.fontRegular.name
                 font.pixelSize: 12
                 textFormat: Text.RichText
                 wrapMode: Text.WordWrap

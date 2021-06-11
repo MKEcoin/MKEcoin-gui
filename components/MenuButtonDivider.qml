@@ -1,15 +1,15 @@
 import QtQuick 2.9
 
-import "." as MKEcoinComponents
-import "effects/" as MKEcoinEffects
+import "." as mkecoinComponents
+import "effects/" as mkecoinEffects
 
 Rectangle {
-    color: MKEcoinComponents.Style.appWindowBorderColor
+    color: mkecoinComponents.Style.appWindowBorderColor
     height: 1
 
-    MKEcoinEffects.ColorTransition {
+    mkecoinEffects.ColorTransition {
         targetObj: parent
-        blackColor: MKEcoinComponents.Style._b_appWindowBorderColor
-        whiteColor: MKEcoinComponents.Style._w_appWindowBorderColor
+        blackColor: mkecoinComponents.Style._b_appWindowBorderColor
+        whiteColor: mkecoinComponents.Style._w_appWindowBorderColor
     }
 }

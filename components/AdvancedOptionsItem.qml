@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 RowLayout {
     id: advancedOptionsItem
@@ -19,9 +19,10 @@ RowLayout {
         Layout.maximumWidth: 195
         Layout.leftMargin: 10
 
-        MKEcoinComponents.Label {
+        mkecoinComponents.Label {
             id: title
             fontSize: 14
+            tooltipIconVisible: true
         }
 
         Rectangle {

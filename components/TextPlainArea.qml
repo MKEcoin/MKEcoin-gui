@@ -1,15 +1,15 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.0
 
-import "." as MKEcoinComponents
+import "." as mkecoinComponents
 
 TextArea {
     id: textArea
     property bool themeTransition: true
     property string colorWhiteTheme: ""
     property string colorBlackTheme: ""
-    color: MKEcoinComponents.Style.defaultFontColor
-    font.family: MKEcoinComponents.Style.fontRegular.name
+    color: mkecoinComponents.Style.defaultFontColor
+    font.family: mkecoinComponents.Style.fontRegular.name
     font.pixelSize: 14
     selectByMouse: false
     wrapMode: Text.WordWrap;
@@ -22,20 +22,20 @@ TextArea {
     states: [
         State {
             name: "black";
-            when: textArea.themeTransition && MKEcoinComponents.Style.blackTheme
+            when: textArea.themeTransition && mkecoinComponents.Style.blackTheme
             PropertyChanges {
                 target: textArea
                 color: {
-                    return textArea.colorBlackTheme ? textArea.colorBlackTheme : MKEcoinComponents.Style._b_defaultFontColor
+                    return textArea.colorBlackTheme ? textArea.colorBlackTheme : mkecoinComponents.Style._b_defaultFontColor
                 }
             }
         }, State {
             name: "white";
-            when: textArea.themeTransition && !MKEcoinComponents.Style.blackTheme
+            when: textArea.themeTransition && !mkecoinComponents.Style.blackTheme
             PropertyChanges {
                 target: textArea
                 color: {
-                    return textArea.colorWhiteTheme ? textArea.colorWhiteTheme : MKEcoinComponents.Style._w_defaultFontColor
+                    return textArea.colorWhiteTheme ? textArea.colorWhiteTheme : mkecoinComponents.Style._w_defaultFontColor
                 }
             }
         }

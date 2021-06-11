@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015, The MKEcoin Project
+// Copyright (c) 2014-2015, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -32,8 +32,8 @@ import QtGraphicalEffects 1.0
 import FontAwesome 1.0
 
 import "." 1.0
-import "." as MKEcoinComponents
-import "effects/" as MKEcoinEffects
+import "." as mkecoinComponents
+import "effects/" as mkecoinEffects
 
 RowLayout {
     id: checkBox
@@ -58,7 +58,7 @@ RowLayout {
             width: (label.width + indicatorRect.width + checkBox.textMargin)
             color: "transparent"
 
-            MKEcoinComponents.TextPlain {
+            mkecoinComponents.TextPlain {
                 id: label
                 font.family: Style.fontLight.name
                 font.pixelSize: checkBox.fontSize
@@ -77,18 +77,18 @@ RowLayout {
                 color: "transparent"
                 rotation: checkBox.checked ? 180  : 0
 
-                MKEcoinEffects.ImageMask {
+                mkecoinEffects.ImageMask {
                     id: indicatorImage
                     anchors.centerIn: parent
                     width: 12
                     height: 8
                     image: "qrc:///images/whiteDropIndicator.png"
-                    color: MKEcoinComponents.Style.defaultFontColor
-                    opacity: MKEcoinComponents.Style.blackTheme ? 1 : 0.75
+                    color: mkecoinComponents.Style.defaultFontColor
+                    opacity: mkecoinComponents.Style.blackTheme ? 1 : 0.75
                     fontAwesomeFallbackIcon: FontAwesome.arrowDown
                     fontAwesomeFallbackSize: 14
 
-                    MKEcoinEffects.ColorTransition {
+                    mkecoinEffects.ColorTransition {
                         targetObj: indicatorImage
                         blackColor: "white"
                         whiteColor: "black"

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -29,9 +29,10 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtGraphicalEffects 1.0
+import FontAwesome 1.0
 
-import "../components" as MKEcoinComponents
-import "../components/effects/" as MKEcoinEffects
+import "../components" as mkecoinComponents
+import "../components/effects/" as mkecoinEffects
 
 Item {
     id: dropdown
@@ -39,15 +40,15 @@ Item {
     property alias dataModel: repeater.model
     property string shadowPressedColor
     property string shadowReleasedColor
-    property string pressedColor: MKEcoinComponents.Style.appWindowBorderColor
-    property string releasedColor: MKEcoinComponents.Style.titleBarButtonHoverColor
-    property string textColor: MKEcoinComponents.Style.defaultFontColor
+    property string pressedColor: mkecoinComponents.Style.appWindowBorderColor
+    property string releasedColor: mkecoinComponents.Style.titleBarButtonHoverColor
+    property string textColor: mkecoinComponents.Style.defaultFontColor
     property alias currentIndex: columnid.currentIndex
     readonly property alias expanded: popup.visible
     property int dropdownHeight: 42
     property int fontHeaderSize: 16
     property int fontItemSize: 14
-    property string colorBorder: MKEcoinComponents.Style.inputBorderColorInActive
+    property string colorBorder: mkecoinComponents.Style.inputBorderColorInActive
     property string colorHeaderBackground: "transparent"
     property bool headerBorder: true
     property bool headerFontBold: false
@@ -74,14 +75,14 @@ Item {
             anchors.fill: parent
         }
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 12
             anchors.right: dropIndicator.left
             anchors.rightMargin: 12
             elide: Text.ElideRight
-            font.family: MKEcoinComponents.Style.fontRegular.name
+            font.family: mkecoinComponents.Style.fontRegular.name
             font.bold: dropdown.headerFontBold
             font.pixelSize: dropdown.fontHeaderSize
             color: dropdown.textColor
@@ -96,19 +97,16 @@ Item {
             anchors.rightMargin: 12
             width: dropdownIcon.width
 
-            Image {
+            mkecoinEffects.ImageMask {
                 id: dropdownIcon
                 anchors.centerIn: parent
-                source: "qrc:///images/whiteDropIndicator.png"
-                visible: false
-            }
-
-            ColorOverlay {
-                source: dropdownIcon
-                anchors.fill: dropdownIcon
-                color: MKEcoinComponents.Style.defaultFontColor
+                image: "qrc:///images/whiteDropIndicator.png"
+                height: 8
+                width: 12
+                fontAwesomeFallbackIcon: FontAwesome.arrowDown
+                fontAwesomeFallbackSize: 14
+                color: mkecoinComponents.Style.defaultFontColor
                 rotation: dropdown.expanded ? 180  : 0
-                opacity: 1
             }
         }
 
@@ -163,26 +161,26 @@ Item {
                         //radius: index === repeater.count - 1 ? 4 : 0
                         color: itemArea.containsMouse || index === columnid.currentIndex || itemArea.containsMouse ? dropdown.releasedColor : dropdown.pressedColor
 
-                        MKEcoinComponents.TextPlain {
+                        mkecoinComponents.TextPlain {
                             id: col1Text
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.left: parent.left
                             anchors.right: col2Text.left
                             anchors.leftMargin: 12
                             anchors.rightMargin: 0
-                            font.family: MKEcoinComponents.Style.fontRegular.name
+                            font.family: mkecoinComponents.Style.fontRegular.name
                             font.bold: true
                             font.pixelSize: fontItemSize
                             color: itemArea.containsMouse || index === columnid.currentIndex || itemArea.containsMouse ? "#FA6800" : "#FFFFFF"
                             text: qsTr(column1) + translationManager.emptyString
                         }
 
-                        MKEcoinComponents.TextPlain {
+                        mkecoinComponents.TextPlain {
                             id: col2Text
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.right: parent.right
                             anchors.rightMargin: 45
-                            font.family: MKEcoinComponents.Style.fontRegular.name
+                            font.family: mkecoinComponents.Style.fontRegular.name
                             font.pixelSize: 14
                             color: "#FFFFFF"
                             text: ""

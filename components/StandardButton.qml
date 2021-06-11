@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -31,7 +31,7 @@ import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Item {
     id: button
@@ -40,10 +40,10 @@ Item {
     property string rightIcon: ""
     property string rightIconInactive: ""
     property color textColor: !button.enabled
-        ? MKEcoinComponents.Style.buttonTextColorDisabled
+        ? mkecoinComponents.Style.buttonTextColorDisabled
         : primary
-        ? MKEcoinComponents.Style.buttonTextColor
-        : MKEcoinComponents.Style.buttonSecondaryTextColor;
+        ? mkecoinComponents.Style.buttonTextColor
+        : mkecoinComponents.Style.buttonSecondaryTextColor;
     property bool small: false
     property alias text: label.text
     property alias fontBold: label.font.bold
@@ -52,6 +52,9 @@ Item {
         else return 16;
     }
     property alias label: label
+    property alias tooltip: tooltip.text
+    property alias tooltipLeft: tooltip.tooltipLeft
+    property alias tooltipPopup: tooltip.tooltipPopup
     signal clicked()
 
     height: small ?  30 : 36
@@ -80,8 +83,8 @@ Item {
                 PropertyChanges {
                     target: buttonRect
                     color: primary
-                        ? MKEcoinComponents.Style.buttonBackgroundColorHover
-                        : MKEcoinComponents.Style.buttonSecondaryBackgroundColorHover
+                        ? mkecoinComponents.Style.buttonBackgroundColorHover
+                        : mkecoinComponents.Style.buttonSecondaryBackgroundColorHover
                 }
             },
             State {
@@ -90,8 +93,8 @@ Item {
                 PropertyChanges {
                     target: buttonRect
                     color: primary
-                        ? MKEcoinComponents.Style.buttonBackgroundColor
-                        : MKEcoinComponents.Style.buttonSecondaryBackgroundColor
+                        ? mkecoinComponents.Style.buttonBackgroundColor
+                        : mkecoinComponents.Style.buttonSecondaryBackgroundColor
                 }
             },
             State {
@@ -99,7 +102,7 @@ Item {
                 when: !button.enabled
                 PropertyChanges {
                     target: buttonRect
-                    color: MKEcoinComponents.Style.buttonBackgroundColorDisabled
+                    color: mkecoinComponents.Style.buttonBackgroundColorDisabled
                 }
             }
         ]
@@ -116,16 +119,16 @@ Item {
         spacing: 11
         anchors.centerIn: parent
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: label
-            font.family: MKEcoinComponents.Style.fontBold.name
+            font.family: mkecoinComponents.Style.fontBold.name
             font.bold: true
             font.pixelSize: button.fontSize
             color: !buttonArea.pressed ? button.textColor : "transparent"
             visible: text !== ""
             themeTransition: false
 
-            MKEcoinComponents.TextPlain {
+            mkecoinComponents.TextPlain {
                 anchors.centerIn: parent
                 color: button.textColor
                 font.bold: label.font.bold
@@ -152,7 +155,7 @@ Item {
 
         Text {
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            color: MKEcoinComponents.Style.defaultFontColor
+            color: mkecoinComponents.Style.defaultFontColor
             font.family: FontAwesome.fontFamilySolid
             font.pixelSize: button.small ? 16 : 20
             font.styleName: "Solid"
@@ -161,11 +164,18 @@ Item {
         }
     }
 
+    mkecoinComponents.Tooltip {
+        id: tooltip
+        anchors.fill: parent
+    }
+
     MouseArea {
         id: buttonArea
         anchors.fill: parent
         hoverEnabled: true
         onClicked: doClick()
+        onEntered: tooltip.text ? tooltip.tooltipPopup.open() : ""
+        onExited: tooltip.text ? tooltip.tooltipPopup.close() : ""
         cursorShape: Qt.PointingHandCursor
     }
 

@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.0 as QtQuickControls
 import QtQuick.Layouts 1.1
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 ColumnLayout {
     property alias from: slider.from
@@ -16,11 +16,11 @@ ColumnLayout {
 
     spacing: 0
 
-    Text {
+    mkecoinComponents.TextPlain {
         id: label
-        color: MKEcoinComponents.Style.defaultFontColor
+        color: mkecoinComponents.Style.defaultFontColor
         font.pixelSize: 14
-        Layout.fillWidth: true
+        font.family: mkecoinComponents.Style.fontRegular.name
     }
 
     QtQuickControls.Slider {
@@ -36,12 +36,12 @@ ColumnLayout {
             width: parent.availableWidth
             height: implicitHeight
             radius: 2
-            color: MKEcoinComponents.Style.progressBarBackgroundColor
+            color: mkecoinComponents.Style.progressBarBackgroundColor
 
             Rectangle {
                 width: parent.visualPosition * parent.width
                 height: parent.height
-                color: MKEcoinComponents.Style.green
+                color: mkecoinComponents.Style.green
                 radius: 2
             }
         }
@@ -53,7 +53,7 @@ ColumnLayout {
             implicitHeight: 18
             radius: 8
             color: parent.pressed ? "#f0f0f0" : "#f6f6f6"
-            border.color: MKEcoinComponents.Style.grey
+            border.color: mkecoinComponents.Style.grey
         }
 
         onMoved: parent.moved()

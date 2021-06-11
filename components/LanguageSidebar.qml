@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2020, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -26,7 +26,7 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 import QtQuick 2.9
 import QtQuick.XmlListModel 2.0
@@ -42,7 +42,7 @@ Drawer {
     y: titleBar.height
 
     background: Rectangle {
-        color: MKEcoinComponents.Style.blackTheme ? "#0d0d0d" : "white"
+        color: mkecoinComponents.Style.blackTheme ? "#0d0d0d" : "white"
         width: parent.width
     }
 
@@ -83,12 +83,12 @@ Drawer {
                     }
                 }
 
-                MKEcoinComponents.TextPlain {
+                mkecoinComponents.TextPlain {
                     anchors.left: parent.left
                     anchors.leftMargin: 30
                     font.bold: true
                     font.pixelSize: 14
-                    color: MKEcoinComponents.Style.defaultFontColor
+                    color: mkecoinComponents.Style.defaultFontColor
                     text: display_name
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -97,8 +97,8 @@ Drawer {
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    color: MKEcoinComponents.Style.dividerColor
-                    opacity: MKEcoinComponents.Style.dividerOpacity
+                    color: mkecoinComponents.Style.dividerColor
+                    opacity: mkecoinComponents.Style.dividerOpacity
                     height: 1
                 }
 

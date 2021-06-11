@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -32,20 +32,23 @@ import QtGraphicalEffects 1.0
 
 import FontAwesome 1.0
 
-import "." as MKEcoinComponents
-import "./effects/" as MKEcoinEffects
+import "." as mkecoinComponents
+import "./effects/" as mkecoinEffects
 
 Item {
     id: inlineButton
 
     property bool small: false
-    property string textColor: MKEcoinComponents.Style.inlineButtonTextColor
+    property string textColor: mkecoinComponents.Style.inlineButtonTextColor
     property alias text: inlineText.text
     property alias fontPixelSize: inlineText.font.pixelSize
     property alias fontFamily: inlineText.font.family
     property alias fontStyleName: inlineText.font.styleName
     property bool isFontAwesomeIcon: fontFamily == FontAwesome.fontFamily || fontFamily == FontAwesome.fontFamilySolid
     property alias buttonColor: rect.color
+    property alias tooltip: tooltip.text
+    property alias tooltipLeft: tooltip.tooltipLeft
+    property alias tooltipBottom: tooltip.tooltipBottom
 
     height: isFontAwesomeIcon ? 30 : 24
     width: isFontAwesomeIcon ? height : inlineText.width + 16
@@ -61,13 +64,13 @@ Item {
     Rectangle{
         id: rect
         anchors.fill: parent
-        color: MKEcoinComponents.Style.buttonInlineBackgroundColor
+        color: mkecoinComponents.Style.buttonInlineBackgroundColor
         radius: 4
 
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: inlineText
-            font.family: MKEcoinComponents.Style.fontBold.name
+            font.family: mkecoinComponents.Style.fontBold.name
             font.bold: true
             font.pixelSize: inlineButton.isFontAwesomeIcon ? 22 : inlineButton.small ? 14 : 16
             color: inlineButton.textColor
@@ -75,11 +78,16 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             themeTransition: false
 
-            MKEcoinEffects.ColorTransition {
+            mkecoinEffects.ColorTransition {
                 targetObj: inlineText
-                blackColor: MKEcoinComponents.Style._b_inlineButtonTextColor
-                whiteColor: MKEcoinComponents.Style._w_inlineButtonTextColor
+                blackColor: mkecoinComponents.Style._b_inlineButtonTextColor
+                whiteColor: mkecoinComponents.Style._w_inlineButtonTextColor
             }
+        }
+
+        mkecoinComponents.Tooltip {
+            id: tooltip
+            anchors.fill: parent
         }
 
         MouseArea {
@@ -87,12 +95,17 @@ Item {
             cursorShape: rect.enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
             hoverEnabled: true
             anchors.fill: parent
-            onClicked: doClick()
+            onClicked: {
+                tooltip.text ? tooltip.tooltipPopup.close() : ""
+                doClick()
+            }
             onEntered: {
+                tooltip.text ? tooltip.tooltipPopup.open() : ""
                 rect.color = buttonColor ? buttonColor : "#707070";
                 rect.opacity = 0.8;
             }
             onExited: {
+                tooltip.text ? tooltip.tooltipPopup.close() : ""
                 rect.opacity = 1.0;
                 rect.color = buttonColor ? buttonColor : "#808080";
             }
@@ -100,7 +113,7 @@ Item {
     }
 
     DropShadow {
-        visible: !MKEcoinComponents.Style.blackTheme
+        visible: !mkecoinComponents.Style.blackTheme
         anchors.fill: rect
         horizontalOffset: 2
         verticalOffset: 2

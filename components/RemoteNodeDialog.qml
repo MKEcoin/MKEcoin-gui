@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The MKEcoin Project
+// Copyright (c) 2021, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -30,9 +30,9 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 
-import "." as MKEcoinComponents
+import "." as mkecoinComponents
 
-MKEcoinComponents.Dialog {
+mkecoinComponents.Dialog {
     id: root
     title: (editMode ? qsTr("Edit remote node") : qsTr("Add remote node")) + translationManager.emptyString
 
@@ -82,7 +82,7 @@ MKEcoinComponents.Dialog {
         root.success = false;
     }
 
-    MKEcoinComponents.RemoteNodeEdit {
+    mkecoinComponents.RemoteNodeEdit {
         id: remoteNodeAddress
         Layout.fillWidth: true
         placeholderFontSize: 15
@@ -95,7 +95,7 @@ MKEcoinComponents.Dialog {
         Layout.fillWidth: true
         spacing: 32
 
-        MKEcoinComponents.LineEdit {
+        mkecoinComponents.LineEdit {
             id: daemonUsername
             Layout.fillWidth: true
             Layout.minimumWidth: 220
@@ -106,7 +106,7 @@ MKEcoinComponents.Dialog {
             fontSize: 15
         }
 
-        MKEcoinComponents.LineEdit {
+        mkecoinComponents.LineEdit {
             id: daemonPassword
             Layout.fillWidth: true
             Layout.minimumWidth: 220
@@ -119,7 +119,7 @@ MKEcoinComponents.Dialog {
         }
     }
 
-    MKEcoinComponents.CheckBox {
+    mkecoinComponents.CheckBox {
         id: setTrustedDaemonCheckBox
         activeFocusOnTab: true
         text: qsTr("Mark as Trusted Daemon") + translationManager.emptyString
@@ -129,7 +129,7 @@ MKEcoinComponents.Dialog {
         Layout.alignment: Qt.AlignRight
         spacing: parent.spacing
 
-        MKEcoinComponents.StandardButton {
+        mkecoinComponents.StandardButton {
             activeFocusOnTab: true
             fontBold: false
             primary: false
@@ -138,7 +138,7 @@ MKEcoinComponents.Dialog {
             onClicked: root.close()
         }
 
-        MKEcoinComponents.StandardButton {
+        mkecoinComponents.StandardButton {
             activeFocusOnTab: true
             fontBold: false
             enabled: remoteNodeAddress.getAddress() != ""

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The mkecoin Project
 // 
 // All rights reserved.
 // 
@@ -27,9 +27,9 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.9
-import MKEcoinComponents.Wallet 1.0
+import mkecoinComponents.Wallet 1.0
 
-import "../components" as MKEcoinComponents
+import "../components" as mkecoinComponents
 
 Rectangle {
     id: item
@@ -61,27 +61,27 @@ Rectangle {
         anchors.rightMargin: 15
         anchors.fill: parent
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: progressText
             anchors.top: parent.top
             anchors.topMargin: 6
-            font.family: MKEcoinComponents.Style.fontMedium.name
+            font.family: mkecoinComponents.Style.fontMedium.name
             font.pixelSize: 13
-            font.bold: MKEcoinComponents.Style.progressBarProgressTextBold
-            color: MKEcoinComponents.Style.defaultFontColor
+            font.bold: mkecoinComponents.Style.progressBarProgressTextBold
+            color: mkecoinComponents.Style.defaultFontColor
             text: qsTr("Synchronizing %1").arg(syncType) + translationManager.emptyString
             height: 18
         }
 
-        MKEcoinComponents.TextPlain {
+        mkecoinComponents.TextPlain {
             id: progressTextValue
             anchors.top: parent.top
             anchors.topMargin: 6
             anchors.right: parent.right
-            font.family: MKEcoinComponents.Style.fontMedium.name
+            font.family: mkecoinComponents.Style.fontMedium.name
             font.pixelSize: 13
-            font.bold: MKEcoinComponents.Style.progressBarProgressTextBold
-            color: MKEcoinComponents.Style.defaultFontColor
+            font.bold: mkecoinComponents.Style.progressBarProgressTextBold
+            color: mkecoinComponents.Style.defaultFontColor
             height:18
         }
 
@@ -93,17 +93,17 @@ Rectangle {
             anchors.topMargin: 4
             height: 8
             radius: 8
-            color: MKEcoinComponents.Style.progressBarBackgroundColor
+            color: mkecoinComponents.Style.progressBarBackgroundColor
 
             states: [
                 State {
                     name: "black";
-                    when: MKEcoinComponents.Style.blackTheme
-                    PropertyChanges { target: bar; color: MKEcoinComponents.Style._b_progressBarBackgroundColor}
+                    when: mkecoinComponents.Style.blackTheme
+                    PropertyChanges { target: bar; color: mkecoinComponents.Style._b_progressBarBackgroundColor}
                 }, State {
                     name: "white";
-                    when: !MKEcoinComponents.Style.blackTheme
-                    PropertyChanges { target: bar; color: MKEcoinComponents.Style._w_progressBarBackgroundColor}
+                    when: !mkecoinComponents.Style.blackTheme
+                    PropertyChanges { target: bar; color: mkecoinComponents.Style._w_progressBarBackgroundColor}
                 }
             ]
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -27,7 +27,7 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Qt.labs.platform 1.0 as PlatformLabs
-import "." as MKEcoinComponents
+import "." as mkecoinComponents
 
 PlatformLabs.MenuBar {
     PlatformLabs.Menu {
@@ -41,9 +41,9 @@ PlatformLabs.MenuBar {
     PlatformLabs.Menu {
         title: qsTr("View")
         PlatformLabs.MenuItem {
-            text: MKEcoinComponents.Style.blackTheme ? qsTr("Light Theme") : qsTr("Dark Theme")
+            text: mkecoinComponents.Style.blackTheme ? qsTr("Light Theme") : qsTr("Dark Theme")
             onTriggered: {
-                MKEcoinComponents.Style.blackTheme = !MKEcoinComponents.Style.blackTheme;
+                mkecoinComponents.Style.blackTheme = !mkecoinComponents.Style.blackTheme;
             }
         }
         PlatformLabs.MenuItem {

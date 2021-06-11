@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015, The MKEcoin Project
+// Copyright (c) 2014-2015, The mkecoin Project
 //
 // All rights reserved.
 //
@@ -28,8 +28,8 @@
 
 import QtQuick 2.9
 
-import "../components" as MKEcoinComponents
-import "../components/effects/" as MKEcoinEffects
+import "../components" as mkecoinComponents
+import "../components/effects/" as mkecoinEffects
 
 Label {
     id: item
@@ -41,12 +41,12 @@ Label {
         anchors.left: parent.left
         anchors.right: parent.right
         height: 2
-        color: MKEcoinComponents.Style.appWindowBorderColor
+        color: mkecoinComponents.Style.appWindowBorderColor
 
-        MKEcoinEffects.ColorTransition {
+        mkecoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MKEcoinComponents.Style._b_appWindowBorderColor
-            whiteColor: MKEcoinComponents.Style._w_appWindowBorderColor
+            blackColor: mkecoinComponents.Style._b_appWindowBorderColor
+            whiteColor: mkecoinComponents.Style._w_appWindowBorderColor
         }
     }
 }
