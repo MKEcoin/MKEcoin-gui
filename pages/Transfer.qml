@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -277,6 +277,7 @@ Rectangle {
                             fontStyleName: "Solid"
                             fontPixelSize: 18
                             text: FontAwesome.desktop
+                            tooltip: qsTr("Grab QR code from screen") + translationManager.emptyString
                             onClicked: {
                                 clearFields();
                                 const codes = oshelper.grabQrCodesFromScreen();
@@ -295,6 +296,7 @@ Rectangle {
                             fontStyleName: "Solid"
                             text: FontAwesome.qrcode
                             visible: appWindow.qrScannerEnabled
+                            tooltip: qsTr("Scan QR code") + translationManager.emptyString
                             onClicked: {
                                 cameraUi.state = "Capture"
                                 cameraUi.qrcode_decoded.connect(updateFromQrCode)
@@ -304,6 +306,7 @@ Rectangle {
                         MKEcoinComponents.InlineButton {
                             fontFamily: FontAwesome.fontFamily
                             text: FontAwesome.addressBook
+                            tooltip: qsTr("Import from address book") + translationManager.emptyString
                             onClicked: {
                                 middlePanel.addressBookView.selectAndSend = true;
                                 appWindow.showPageRequest("AddressBook");
@@ -315,12 +318,32 @@ Rectangle {
                         }
                     }
 
-                    MKEcoinComponents.TextPlain {
-                        Layout.preferredWidth: recipientLayout.secondRowWidth
-                        font.family: MKEcoinComponents.Style.fontRegular.name
-                        font.pixelSize: 16
-                        color: MKEcoinComponents.Style.defaultFontColor
-                        text: qsTr("Amount") + translationManager.emptyString
+                    RowLayout {
+                        id: amountLabel
+                        spacing: 6
+                        Layout.preferredWidth: 125
+                        Layout.maximumWidth: recipientLayout.secondRowWidth
+
+                        MKEcoinComponents.TextPlain {
+                            font.family: MKEcoinComponents.Style.fontRegular.name
+                            font.pixelSize: 16
+                            color: MKEcoinComponents.Style.defaultFontColor
+                            text: qsTr("Amount") + translationManager.emptyString
+                        }
+
+                        MKEcoinComponents.InlineButton {
+                            fontFamily: FontAwesome.fontFamilySolid
+                            fontStyleName: "Solid"
+                            fontPixelSize: 16
+                            text: FontAwesome.infinity
+                            visible: recipientModel.count == 1
+                            tooltip: qsTr("Send all unlocked balance of this account") + translationManager.emptyString
+                            onClicked: recipientRepeater.itemAt(0).children[1].children[2].text = "(all)";
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
                     }
 
                     Item {
@@ -337,6 +360,7 @@ Rectangle {
 
                         Rectangle {
                             Layout.fillWidth: true
+                            Layout.topMargin: -1
                             Layout.rightMargin: recipientLayout.thirdRowWidth
                             color: MKEcoinComponents.Style.inputBorderColorInActive
                             height: 1
@@ -444,10 +468,14 @@ Rectangle {
                                 Layout.bottomMargin: recipientLayout.rowSpacing / 2
                                 Layout.rightMargin: recipientLayout.colSpacing / 2
                                 Layout.preferredWidth: 125
+                                Layout.maximumWidth: 125
                                 borderDisabled: true
                                 fontFamily: MKEcoinComponents.Style.fontMonoRegular.name
                                 fontSize: 14
-                                inputPadding: 0
+                                inputPaddingLeft: 0
+                                inputPaddingRight: 0
+                                inputPaddingTop: 0
+                                inputPaddingBottom: 0
                                 placeholderFontFamily: MKEcoinComponents.Style.fontMonoRegular.name
                                 placeholderFontSize: 14
                                 placeholderLeftMargin: 0
@@ -482,21 +510,29 @@ Rectangle {
                                 font.styleName: "Solid"
                                 horizontalAlignment: Text.AlignHCenter
                                 opacity: mouseArea.containsMouse ? 1 : 0.85
-                                text: recipientModel.count == 1 ? FontAwesome.infinity : FontAwesome.times
+                                text: FontAwesome.times
+                                tooltip: qsTr("Remove recipient")  + translationManager.emptyString
+                                tooltipLeft: true
+                                visible: recipientModel.count > 1
 
                                 MouseArea {
                                     id: mouseArea
                                     anchors.fill: parent
                                     cursorShape: Qt.PointingHandCursor
                                     hoverEnabled: true
-                                    onClicked: {
-                                        if (recipientModel.count == 1) {
-                                            parent.parent.children[2].text = "(all)";
-                                        } else {
-                                            recipientModel.remove(index);
-                                        }
-                                    }
+                                    onEntered: parent.tooltipPopup.open()
+                                    onExited: parent.tooltipPopup.close()
+                                    onClicked: recipientModel.remove(index);
                                 }
+                            }
+
+                            MKEcoinComponents.TextPlain {
+                                Layout.leftMargin: recipientLayout.colSpacing / 2
+                                Layout.preferredWidth: recipientLayout.thirdRowWidth
+                                horizontalAlignment: Text.AlignHCenter
+                                font.family: MKEcoinComponents.Style.fontRegular.name
+                                text: "XMR"
+                                visible: recipientModel.count == 1
                             }
                         }
                     }
@@ -514,6 +550,7 @@ Rectangle {
                         Layout.column: 0
                         Layout.row: 0
                         Layout.fillWidth: true
+                        Layout.topMargin: recipientModel.count > 1 ? 0 : 5
                         spacing: 0
 
                         CheckBox {
@@ -553,11 +590,15 @@ Rectangle {
                         Layout.column: 1
                         Layout.row: 0
                         Layout.preferredWidth: recipientLayout.secondRowWidth
+                        Layout.maximumWidth: recipientLayout.secondRowWidth
                         borderDisabled: true
                         fontFamily: MKEcoinComponents.Style.fontMonoRegular.name
                         fontSize: 14
                         inputHeight: 30
-                        inputPadding: 0
+                        inputPaddingLeft: 0
+                        inputPaddingRight: 0
+                        inputPaddingTop: 0
+                        inputPaddingBottom: 0
                         readOnly: true
                         text: Utils.removeTrailingZeros(walletManager.displayAmount(recipientModel.getAmountTotal()))
                         visible: recipientModel.count > 1
@@ -567,6 +608,7 @@ Rectangle {
                         Layout.column: 2
                         Layout.row: 0
                         Layout.preferredWidth: recipientLayout.thirdRowWidth
+                        Layout.maximumWidth: recipientLayout.thirdRowWidth
                         horizontalAlignment: Text.AlignHCenter
                         font.family: MKEcoinComponents.Style.fontRegular.name
                         text: "XMR"
@@ -577,11 +619,16 @@ Rectangle {
                         Layout.column: 1
                         Layout.row: recipientModel.count > 1 ? 1 : 0
                         Layout.preferredWidth: recipientLayout.secondRowWidth
+                        Layout.topMargin: recipientModel.count > 1 ? 0 : 5
+                        Layout.maximumWidth: recipientLayout.secondRowWidth
                         borderDisabled: true
                         fontFamily: MKEcoinComponents.Style.fontMonoRegular.name
                         fontSize: 14
                         inputHeight: 30
-                        inputPadding: 0
+                        inputPaddingLeft: 0
+                        inputPaddingRight: 0
+                        inputPaddingTop: 0
+                        inputPaddingBottom: 0
                         opacity: 0.7
                         readOnly: true
                         text: fiatApiConvertToFiat(walletManager.displayAmount(recipientModel.getAmountTotal()))
@@ -592,6 +639,8 @@ Rectangle {
                         Layout.column: 2
                         Layout.row: recipientModel.count > 1 ? 1 : 0
                         Layout.preferredWidth: recipientLayout.thirdRowWidth
+                        Layout.topMargin: recipientModel.count > 1 ? 0 : 5
+                        Layout.maximumWidth: recipientLayout.thirdRowWidth
                         font.family: MKEcoinComponents.Style.fontRegular.name
                         horizontalAlignment: Text.AlignHCenter
                         opacity: 0.7

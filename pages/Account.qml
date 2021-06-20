@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -304,6 +304,7 @@ Rectangle {
                                 opacity: 0.5
                                 Layout.preferredWidth: 23
                                 Layout.preferredHeight: 21
+                                tooltip: qsTr("Edit account label") + translationManager.emptyString
 
                                 onClicked: pageAccount.renameSubaddressAccountLabel(index);
                             }
@@ -317,6 +318,7 @@ Rectangle {
                                 opacity: 0.5
                                 Layout.preferredWidth: 16
                                 Layout.preferredHeight: 21
+                                tooltip: qsTr("Copy address to clipboard") + translationManager.emptyString
 
                                 onClicked: {
                                     console.log("Address copied to clipboard");

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -127,7 +127,7 @@ Rectangle {
                         Rectangle {
                             anchors.fill: parent
                             anchors.topMargin: 5
-                            anchors.rightMargin: 80
+                            anchors.rightMargin: 90
                             color: "transparent"
 
                             MKEcoinComponents.Label {
@@ -183,6 +183,18 @@ Rectangle {
                             spacing: 10
 
                             MKEcoinComponents.IconButton {
+                                fontAwesomeFallbackIcon: FontAwesome.searchPlus
+                                fontAwesomeFallbackSize: 22
+                                color: MKEcoinComponents.Style.defaultFontColor
+                                fontAwesomeFallbackOpacity: 0.5
+                                Layout.preferredWidth: 23
+                                Layout.preferredHeight: 21
+                                tooltip: qsTr("See transactions") + translationManager.emptyString
+
+                                onClicked: doSearchInHistory(address)
+                            }
+
+                            MKEcoinComponents.IconButton {
                                 id: renameButton
                                 image: "qrc:///images/edit.svg"
                                 fontAwesomeFallbackIcon: FontAwesome.edit
@@ -192,6 +204,7 @@ Rectangle {
                                 Layout.preferredWidth: 23
                                 Layout.preferredHeight: 21
                                 visible: index !== 0
+                                tooltip: qsTr("Edit address label") + translationManager.emptyString
 
                                 onClicked: {
                                     renameSubaddressLabel(index);
@@ -207,6 +220,7 @@ Rectangle {
                                 opacity: 0.5
                                 Layout.preferredWidth: 16
                                 Layout.preferredHeight: 21
+                                tooltip: qsTr("Copy address to clipboard") + translationManager.emptyString
 
                                 onClicked: {
                                     console.log("Address copied to clipboard");

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -134,7 +134,7 @@ Rectangle {
                         height: addressBookListRow.addressBookListItemHeight
                         width: parent ? parent.width : undefined
                         Layout.fillWidth: true
-                        color: "transparent"
+                        color: itemMouseArea.containsMouse ? MKEcoinComponents.Style.titleBarButtonHoverColor : "transparent"
 
                         function doSend() {
                             console.log("Sending to: ", address +" "+ paymentId);
@@ -159,7 +159,7 @@ Rectangle {
                         Rectangle {
                             anchors.fill: parent
                             anchors.topMargin: 5
-                            anchors.rightMargin: 110
+                            anchors.rightMargin: 125
                             color: "transparent"
 
                             MKEcoinComponents.Label {
@@ -187,8 +187,10 @@ Rectangle {
                             }
 
                             MouseArea {
+                                id: itemMouseArea
                                 anchors.fill: parent
                                 cursorShape: Qt.PointingHandCursor
+                                hoverEnabled: true
                                 visible: root.selectAndSend
                                 onClicked: {
                                     doSend();
@@ -208,11 +210,28 @@ Rectangle {
                                 image: "qrc:///images/arrow-right-in-circle-outline-medium-white.svg"
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+                                fontAwesomeFallbackIcon: FontAwesome.arrowRight
+                                fontAwesomeFallbackSize: 22
+                                fontAwesomeFallbackOpacity: 0.5
                                 Layout.preferredWidth: 20
                                 Layout.preferredHeight: 20
+                                tooltip: qsTr("Send to this address") + translationManager.emptyString
+
                                 onClicked: {
                                     doSend();
                                 }
+                            }
+
+                            MKEcoinComponents.IconButton {
+                                fontAwesomeFallbackIcon: FontAwesome.searchPlus
+                                fontAwesomeFallbackSize: 22
+                                color: MKEcoinComponents.Style.defaultFontColor
+                                fontAwesomeFallbackOpacity: 0.5
+                                Layout.preferredWidth: 23
+                                Layout.preferredHeight: 21
+                                tooltip: qsTr("See transactions") + translationManager.emptyString
+
+                                onClicked: doSearchInHistory(address)
                             }
 
                             MKEcoinComponents.IconButton {
@@ -220,8 +239,12 @@ Rectangle {
                                 image: "qrc:///images/edit.svg"
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+                                fontAwesomeFallbackIcon: FontAwesome.edit
+                                fontAwesomeFallbackSize: 22
+                                fontAwesomeFallbackOpacity: 0.5
                                 Layout.preferredWidth: 23
                                 Layout.preferredHeight: 21
+                                tooltip: qsTr("Edit address label") + translationManager.emptyString
 
                                 onClicked: {
                                     addressBookListView.currentIndex = index;
@@ -232,10 +255,14 @@ Rectangle {
                             MKEcoinComponents.IconButton {
                                 id: copyButton
                                 image: "qrc:///images/copy.svg"
-                                Layout.preferredWidth: 16
-                                Layout.preferredHeight: 21
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+                                fontAwesomeFallbackIcon: FontAwesome.clipboard
+                                fontAwesomeFallbackSize: 22
+                                fontAwesomeFallbackOpacity: 0.5
+                                Layout.preferredWidth: 16
+                                Layout.preferredHeight: 21
+                                tooltip: qsTr("Copy address to clipboard") + translationManager.emptyString
 
                                 onClicked: {
                                     console.log("Address copied to clipboard");

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -28,7 +28,7 @@
 
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.2
 
 import "../../js/Utils.js" as Utils
 import "../../components" as MKEcoinComponents
@@ -132,6 +132,18 @@ Rectangle {
             font.pixelSize: 18
             font.family: MKEcoinComponents.Style.fontRegular.name
             text: qsTr("Daemon log") + translationManager.emptyString
+            themeTransition: false
+            onColorChanged: {
+                var flickableContentYBefore = flickable.contentY
+                var daemonLogText = consoleArea.text
+                consoleArea.clear();
+                if (MKEcoinComponents.Style.blackTheme) {
+                    consoleArea.append(daemonLogText.replace(/#000000/g, '#ffffff').replace(/#008000/g, '#00ff00'));
+                } else {
+                    consoleArea.append(daemonLogText.replace(/#ffffff/g, '#000000').replace(/#00ff00/g, '#008000'));
+                }
+                flickable.contentY = flickableContentYBefore
+            }
         }
 
         Item {
@@ -164,7 +176,7 @@ Rectangle {
                     wrapMode: TextEdit.Wrap
                     readOnly: true
                     function logCommand(msg){
-                        msg = log_color(msg, "lime");
+                        msg = log_color(msg, MKEcoinComponents.Style.blackTheme ? "lime" : "green");
                         consoleArea.append(msg);
                     }
                     function logMessage(msg){
@@ -173,7 +185,7 @@ Rectangle {
                         if(msg.toLowerCase().indexOf('error') >= 0){
                             color = MKEcoinComponents.Style.errorColor;
                         } else if (msg.toLowerCase().indexOf('warning') >= 0){
-                            color = MKEcoinComponents.Style.warningColor;
+                            color = "#fa6800"
                         }
 
                         // format multi-lines
@@ -206,6 +218,7 @@ Rectangle {
 
                 ScrollBar.vertical: ScrollBar {
                     onActiveChanged: if (!active && !isMac) active = true
+                    policy: isMac ? ScrollBar.AsNeeded : ScrollBar.AlwaysOn
                 }
             }
         }
@@ -213,11 +226,14 @@ Rectangle {
         MKEcoinComponents.LineEdit {
             id: sendCommandText
             Layout.fillWidth: true
+            inputPaddingTop: 0
+            inputPaddingBottom: 0
             property var lastCommands: []
             property int currentCommandIndex
             enabled: !persistentSettings.useRemoteNode
             fontBold: false
-            placeholderText: qsTr("command + enter (e.g 'help' or 'status')") + translationManager.emptyString
+            fontSize: 16
+            placeholderText: qsTr("Type a command (e.g '%1' or '%2') and press Enter").arg("help").arg("status") + translationManager.emptyString
             placeholderFontSize: 16
             Keys.onUpPressed: {
                 if (currentCommandIndex != 0) {

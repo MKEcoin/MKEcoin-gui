@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -154,10 +154,10 @@ Rectangle {
                 Layout.fillWidth: true
                 input.topPadding: 6
                 input.bottomPadding: 6
-                fontSize: 16
+                fontSize: 15
                 labelFontSize: 14
                 placeholderText: qsTr("Search by Transaction ID, Address, Description, Amount or Blockheight") + translationManager.emptyString
-                placeholderFontSize: 16
+                placeholderFontSize: 15
                 inputHeight: 34
                 onTextUpdated: {
                     if(searchInput.text != null && searchInput.text.length >= 3){
@@ -168,6 +168,27 @@ Rectangle {
                         root.sortSearchString = null;
                         root.reset();
                         root.updateFilter();
+                    }
+                }
+
+                Rectangle {
+                    color: "transparent"
+                    height: cleanButton.height
+                    width: cleanButton.width
+                    Layout.rightMargin: -8
+                    Layout.leftMargin: -2
+
+                    MKEcoinComponents.InlineButton {
+                        id: cleanButton
+                        buttonColor: "transparent"
+                        fontFamily: FontAwesome.fontFamilySolid
+                        fontStyleName: "Solid"
+                        fontPixelSize: 18
+                        text: FontAwesome.times
+                        tooltip: qsTr("Clean") + translationManager.emptyString
+                        tooltipLeft: true
+                        visible: searchInput.text != ""
+                        onClicked: searchInput.text = ""
                     }
                 }
             }
@@ -958,6 +979,8 @@ Rectangle {
                                     label.font.family: FontAwesome.fontFamily
                                     fontSize: 18
                                     width: 34
+                                    tooltip: qsTr("Transaction details") + translationManager.emptyString
+                                    tooltipLeft: true
 
                                     MouseArea {
                                         state: "details"
@@ -965,8 +988,14 @@ Rectangle {
                                         hoverEnabled: true
                                         z: parent.z + 1
 
-                                        onEntered: parent.opacity = 0.8;
-                                        onExited: parent.opacity = 1.0;
+                                        onEntered: {
+                                            parent.opacity = 0.8;
+                                            parent.tooltipPopup.open()
+                                        }
+                                        onExited: {
+                                            parent.opacity = 1.0;
+                                            parent.tooltipPopup.close()
+                                        }
                                     }
                                 }
 
@@ -988,6 +1017,8 @@ Rectangle {
                                     label.font.family: FontAwesome.fontFamilyBrands
                                     fontSize: 18
                                     width: 34
+                                    tooltip: qsTr("Generate payment proof") + translationManager.emptyString
+                                    tooltipLeft: true
 
                                     MouseArea {
                                         state: "proof"
@@ -995,8 +1026,14 @@ Rectangle {
                                         hoverEnabled: true
                                         z: parent.z + 1
 
-                                        onEntered: parent.opacity = 0.8;
-                                        onExited: parent.opacity = 1.0;
+                                        onEntered: {
+                                            parent.opacity = 0.8;
+                                            parent.tooltipPopup.open()
+                                        }
+                                        onExited: {
+                                            parent.opacity = 1.0;
+                                            parent.tooltipPopup.close()
+                                        }
                                     }
                                 }
                             }
@@ -1271,6 +1308,8 @@ Rectangle {
                         image: "qrc:///images/whiteDropIndicator.png"
                         rotation: delegate.collapsed ? 180 : 0
                         color: MKEcoinComponents.Style.defaultFontColor
+                        fontAwesomeFallbackIcon: FontAwesome.arrowDown
+                        fontAwesomeFallbackSize: 14
                     }
                 }
 
@@ -1368,7 +1407,7 @@ Rectangle {
         }
 
         if (typeof root.model !== 'undefined' && root.model != null) {
-            toDatePicker.currentDate = root.model.transactionHistory.lastDateTime
+            toDatePicker.currentDate = new Date(); //today
         }
 
         // extract from model, create JS array of txs
@@ -1746,7 +1785,14 @@ Rectangle {
             root.model = appWindow.currentWallet.historyModel;
             root.model.sortRole = TransactionHistoryModel.TransactionBlockHeightRole
             root.model.sort(0, Qt.DescendingOrder);
-            fromDatePicker.currentDate = model.transactionHistory.firstDateTime
+            var count = root.model.rowCount()
+            if (count > 0) {
+                //date of the first transaction
+                fromDatePicker.currentDate = root.model.data(root.model.index((count - 1), 0), TransactionHistoryModel.TransactionDateRole);
+            } else {
+                //date of MKEcoin birth (2014-04-18)
+                fromDatePicker.currentDate = model.transactionHistory.firstDateTime
+            }
         }
 
         root.reset();
@@ -1763,10 +1809,13 @@ Rectangle {
 
     function searchInHistory(searchTerm){
         searchInput.text = searchTerm;
+        searchInput.forceActiveFocus();
+        searchInput.cursorPosition = searchInput.text.length;
         sortAndFilter.collapsed = true;
     }
 
     function clearFields() {
+        sortAndFilter.collapsed = false;
         searchInput.text = "";
         root.txDataCollapsed = [];
     }
