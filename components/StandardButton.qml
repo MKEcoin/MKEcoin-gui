@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -31,7 +31,7 @@ import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 Item {
     id: button
@@ -40,10 +40,10 @@ Item {
     property string rightIcon: ""
     property string rightIconInactive: ""
     property color textColor: !button.enabled
-        ? mkecoinComponents.Style.buttonTextColorDisabled
+        ? MKEcoinComponents.Style.buttonTextColorDisabled
         : primary
-        ? mkecoinComponents.Style.buttonTextColor
-        : mkecoinComponents.Style.buttonSecondaryTextColor;
+        ? MKEcoinComponents.Style.buttonTextColor
+        : MKEcoinComponents.Style.buttonSecondaryTextColor;
     property bool small: false
     property alias text: label.text
     property alias fontBold: label.font.bold
@@ -83,8 +83,8 @@ Item {
                 PropertyChanges {
                     target: buttonRect
                     color: primary
-                        ? mkecoinComponents.Style.buttonBackgroundColorHover
-                        : mkecoinComponents.Style.buttonSecondaryBackgroundColorHover
+                        ? MKEcoinComponents.Style.buttonBackgroundColorHover
+                        : MKEcoinComponents.Style.buttonSecondaryBackgroundColorHover
                 }
             },
             State {
@@ -93,8 +93,8 @@ Item {
                 PropertyChanges {
                     target: buttonRect
                     color: primary
-                        ? mkecoinComponents.Style.buttonBackgroundColor
-                        : mkecoinComponents.Style.buttonSecondaryBackgroundColor
+                        ? MKEcoinComponents.Style.buttonBackgroundColor
+                        : MKEcoinComponents.Style.buttonSecondaryBackgroundColor
                 }
             },
             State {
@@ -102,7 +102,7 @@ Item {
                 when: !button.enabled
                 PropertyChanges {
                     target: buttonRect
-                    color: mkecoinComponents.Style.buttonBackgroundColorDisabled
+                    color: MKEcoinComponents.Style.buttonBackgroundColorDisabled
                 }
             }
         ]
@@ -119,16 +119,16 @@ Item {
         spacing: 11
         anchors.centerIn: parent
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: label
-            font.family: mkecoinComponents.Style.fontBold.name
+            font.family: MKEcoinComponents.Style.fontBold.name
             font.bold: true
             font.pixelSize: button.fontSize
             color: !buttonArea.pressed ? button.textColor : "transparent"
             visible: text !== ""
             themeTransition: false
 
-            mkecoinComponents.TextPlain {
+            MKEcoinComponents.TextPlain {
                 anchors.centerIn: parent
                 color: button.textColor
                 font.bold: label.font.bold
@@ -155,7 +155,7 @@ Item {
 
         Text {
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            color: mkecoinComponents.Style.defaultFontColor
+            color: MKEcoinComponents.Style.defaultFontColor
             font.family: FontAwesome.fontFamilySolid
             font.pixelSize: button.small ? 16 : 20
             font.styleName: "Solid"
@@ -164,7 +164,7 @@ Item {
         }
     }
 
-    mkecoinComponents.Tooltip {
+    MKEcoinComponents.Tooltip {
         id: tooltip
         anchors.fill: parent
     }

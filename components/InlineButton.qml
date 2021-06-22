@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2019, The mkecoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -32,14 +32,14 @@ import QtGraphicalEffects 1.0
 
 import FontAwesome 1.0
 
-import "." as mkecoinComponents
-import "./effects/" as mkecoinEffects
+import "." as MKEcoinComponents
+import "./effects/" as MKEcoinEffects
 
 Item {
     id: inlineButton
 
     property bool small: false
-    property string textColor: mkecoinComponents.Style.inlineButtonTextColor
+    property string textColor: MKEcoinComponents.Style.inlineButtonTextColor
     property alias text: inlineText.text
     property alias fontPixelSize: inlineText.font.pixelSize
     property alias fontFamily: inlineText.font.family
@@ -64,13 +64,13 @@ Item {
     Rectangle{
         id: rect
         anchors.fill: parent
-        color: mkecoinComponents.Style.buttonInlineBackgroundColor
+        color: MKEcoinComponents.Style.buttonInlineBackgroundColor
         radius: 4
 
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: inlineText
-            font.family: mkecoinComponents.Style.fontBold.name
+            font.family: MKEcoinComponents.Style.fontBold.name
             font.bold: true
             font.pixelSize: inlineButton.isFontAwesomeIcon ? 22 : inlineButton.small ? 14 : 16
             color: inlineButton.textColor
@@ -78,14 +78,14 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             themeTransition: false
 
-            mkecoinEffects.ColorTransition {
+            MKEcoinEffects.ColorTransition {
                 targetObj: inlineText
-                blackColor: mkecoinComponents.Style._b_inlineButtonTextColor
-                whiteColor: mkecoinComponents.Style._w_inlineButtonTextColor
+                blackColor: MKEcoinComponents.Style._b_inlineButtonTextColor
+                whiteColor: MKEcoinComponents.Style._w_inlineButtonTextColor
             }
         }
 
-        mkecoinComponents.Tooltip {
+        MKEcoinComponents.Tooltip {
             id: tooltip
             anchors.fill: parent
         }
@@ -113,7 +113,7 @@ Item {
     }
 
     DropShadow {
-        visible: !mkecoinComponents.Style.blackTheme
+        visible: !MKEcoinComponents.Style.blackTheme
         anchors.fill: rect
         horizontalOffset: 2
         verticalOffset: 2

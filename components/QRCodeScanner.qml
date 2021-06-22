@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2020, The mkecoin Project
+// Copyright (c) 2014-2020, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtMultimedia 5.4
 import QtQuick.Dialogs 1.2
-import mkecoinComponents.QRCodeScanner 1.0
+import MKEcoinComponents.QRCodeScanner 1.0
 
 Rectangle {
     id : root

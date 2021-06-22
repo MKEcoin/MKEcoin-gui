@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -30,8 +30,8 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import FontAwesome 1.0
 
-import "." as mkecoinComponents
-import "effects/" as mkecoinEffects
+import "." as MKEcoinComponents
+import "effects/" as MKEcoinEffects
 
 Item {
     id: checkBox
@@ -82,22 +82,22 @@ Item {
                 visible: checkBox.border
                 anchors.fill: parent
                 radius: 3
-                color: checkBox.enabled ? "transparent" : mkecoinComponents.Style.inputBoxBackgroundDisabled
+                color: checkBox.enabled ? "transparent" : MKEcoinComponents.Style.inputBoxBackgroundDisabled
                 border.color:
                     if (checkBox.activeFocus) {
-                        return mkecoinComponents.Style.inputBorderColorActive;
+                        return MKEcoinComponents.Style.inputBorderColorActive;
                     } else {
-                        return mkecoinComponents.Style.inputBorderColorInActive;
+                        return MKEcoinComponents.Style.inputBorderColorInActive;
                     }
             }
 
-            mkecoinEffects.ImageMask {
+            MKEcoinEffects.ImageMask {
                 id: img
                 visible: checkBox.checked || checkBox.uncheckedIcon != ""
                 anchors.centerIn: parent
                 width: checkBox.imgWidth
                 height: checkBox.imgHeight
-                color: mkecoinComponents.Style.defaultFontColor
+                color: MKEcoinComponents.Style.defaultFontColor
                 fontAwesomeFallbackIcon: checkBox.fontAwesomeIcons ? getIcon() : FontAwesome.plus
                 fontAwesomeFallbackSize: 14
                 image: checkBox.fontAwesomeIcons ? "" : getIcon()
@@ -110,11 +110,11 @@ Item {
             }
         }
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: label
-            font.family: mkecoinComponents.Style.fontRegular.name
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: checkBox.fontSize
-            color: mkecoinComponents.Style.defaultFontColor
+            color: MKEcoinComponents.Style.defaultFontColor
             textFormat: Text.RichText
             wrapMode: Text.NoWrap
             visible: text != ""

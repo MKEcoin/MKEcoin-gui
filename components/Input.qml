@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -29,24 +29,24 @@
 import QtQuick.Controls 2.0
 import QtQuick 2.9
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 TextField {
     id: textField
-    font.family: mkecoinComponents.Style.fontRegular.name
+    font.family: MKEcoinComponents.Style.fontRegular.name
     font.pixelSize: 18
     font.bold: true
     horizontalAlignment: TextInput.AlignLeft
     selectByMouse: true
-    color: mkecoinComponents.Style.defaultFontColor
-    selectionColor: mkecoinComponents.Style.textSelectionColor
-    selectedTextColor: mkecoinComponents.Style.textSelectedColor
+    color: MKEcoinComponents.Style.defaultFontColor
+    selectionColor: MKEcoinComponents.Style.textSelectionColor
+    selectedTextColor: MKEcoinComponents.Style.textSelectedColor
 
     background: Rectangle {
         color: "transparent"
     }
 
-    mkecoinComponents.ContextMenu {
+    MKEcoinComponents.ContextMenu {
         cursorShape: Qt.IBeamCursor
         onPaste: {
             textField.clear();

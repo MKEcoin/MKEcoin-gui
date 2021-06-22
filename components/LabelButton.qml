@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015, The mkecoin Project
+// Copyright (c) 2014-2015, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 
 Rectangle {
@@ -37,22 +37,22 @@ Rectangle {
     property alias text: labelButtonText.text
 
     id: labelButton
-    color: mkecoinComponents.Style.buttonBackgroundColorDisabled
+    color: MKEcoinComponents.Style.buttonBackgroundColorDisabled
     radius: 3
     height: 20
     width: labelButtonText.width + 14
     anchors.right: copyButton.left
     anchors.rightMargin: 6
 
-    mkecoinComponents.TextPlain {
+    MKEcoinComponents.TextPlain {
         id: labelButtonText
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        font.family: mkecoinComponents.Style.fontRegular.name
+        font.family: MKEcoinComponents.Style.fontRegular.name
         font.pixelSize: 12
         font.bold: true
         text: ""
-        color: mkecoinComponents.Style.inlineButtonTextColor
+        color: MKEcoinComponents.Style.inlineButtonTextColor
     }
 
     MouseArea {
@@ -61,11 +61,11 @@ Rectangle {
         hoverEnabled: true
         onClicked: labelButton.clicked()
         onEntered: {
-            labelButton.color = mkecoinComponents.Style.buttonBackgroundColorDisabledHover;
+            labelButton.color = MKEcoinComponents.Style.buttonBackgroundColorDisabledHover;
             labelButtonText.opacity = 0.8;
         }
         onExited: {
-            labelButton.color = mkecoinComponents.Style.buttonBackgroundColorDisabled;
+            labelButton.color = MKEcoinComponents.Style.buttonBackgroundColorDisabled;
             labelButtonText.opacity = 1.0;
         }
     }

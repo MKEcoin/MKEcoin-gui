@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The mkecoin Project
+// Copyright (c) 2021, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -31,14 +31,14 @@ import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
 
-import "." as mkecoinComponents
-import "effects/" as mkecoinEffects
+import "." as MKEcoinComponents
+import "effects/" as MKEcoinEffects
 
 ColumnLayout {
     id: remoteNodeList
     spacing: 20
 
-    mkecoinComponents.CheckBox {
+    MKEcoinComponents.CheckBox {
         border: false
         checkedIcon: FontAwesome.minusCircle
         uncheckedIcon: FontAwesome.plusCircle
@@ -59,20 +59,20 @@ ColumnLayout {
             Rectangle {
                 height: 30
                 Layout.fillWidth: true
-                color: itemMouseArea.containsMouse || index === remoteNodesModel.selected ? mkecoinComponents.Style.titleBarButtonHoverColor : "transparent"
+                color: itemMouseArea.containsMouse || index === remoteNodesModel.selected ? MKEcoinComponents.Style.titleBarButtonHoverColor : "transparent"
 
                 Rectangle {
-                    color: mkecoinComponents.Style.appWindowBorderColor
+                    color: MKEcoinComponents.Style.appWindowBorderColor
                     anchors.right: parent.right
                     anchors.left: parent.left
                     anchors.top: parent.top
                     height: 1
                     visible: index > 0
 
-                    mkecoinEffects.ColorTransition {
+                    MKEcoinEffects.ColorTransition {
                         targetObj: parent
-                        blackColor: mkecoinComponents.Style._b_appWindowBorderColor
-                        whiteColor: mkecoinComponents.Style._w_appWindowBorderColor
+                        blackColor: MKEcoinComponents.Style._b_appWindowBorderColor
+                        whiteColor: MKEcoinComponents.Style._w_appWindowBorderColor
                     }
                 }
 
@@ -81,8 +81,8 @@ ColumnLayout {
                     anchors.rightMargin: 80
                     color: "transparent"
 
-                    mkecoinComponents.TextPlain {
-                        color: index === remoteNodesModel.selected ? mkecoinComponents.Style.defaultFontColor : mkecoinComponents.Style.dimmedFontColor
+                    MKEcoinComponents.TextPlain {
+                        color: index === remoteNodesModel.selected ? MKEcoinComponents.Style.defaultFontColor : MKEcoinComponents.Style.dimmedFontColor
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 6
@@ -107,7 +107,7 @@ ColumnLayout {
                     height: 30
                     spacing: 10
 
-                    mkecoinComponents.InlineButton {
+                    MKEcoinComponents.InlineButton {
                         buttonColor: "transparent"
                         fontFamily: FontAwesome.fontFamily
                         fontPixelSize: 18
@@ -119,7 +119,7 @@ ColumnLayout {
                         })
                     }
 
-                    mkecoinComponents.InlineButton {
+                    MKEcoinComponents.InlineButton {
                         buttonColor: "transparent"
                         fontFamily: FontAwesome.fontFamily
                         text: FontAwesome.times

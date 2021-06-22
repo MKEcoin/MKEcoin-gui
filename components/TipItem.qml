@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Window 2.1
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 Window {
     property alias text: content.text
@@ -60,7 +60,7 @@ Window {
             source: "qrc:///images/tip.png"
         }
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: content
             anchors.horizontalCenter: parent.horizontalCenter
             y: 6

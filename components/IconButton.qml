@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -27,19 +27,19 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.9
-import "../components" as mkecoinComponents
-import "../components/effects" as mkecoinEffects
+import "../components" as MKEcoinComponents
+import "../components/effects" as MKEcoinEffects
 
-mkecoinEffects.ImageMask {
+MKEcoinEffects.ImageMask {
     id: button
     z: 666
-    color: mkecoinComponents.Style.defaultFontColor
+    color: MKEcoinComponents.Style.defaultFontColor
     image: ""
 
     property alias tooltip: tooltip.text
     signal clicked(var mouse)
 
-    mkecoinComponents.Tooltip {
+    MKEcoinComponents.Tooltip {
         id: tooltip
         anchors.fill: parent
         tooltipLeft: true

@@ -1,4 +1,4 @@
-// Copyright (c) 2020, The mkecoin Project
+// Copyright (c) 2020, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -30,9 +30,9 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 
-import mkecoinComponents.Downloader 1.0
+import MKEcoinComponents.Downloader 1.0
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 Popup {
     id: updateDialog
@@ -48,9 +48,9 @@ Popup {
     property string version: ""
 
     background: Rectangle {
-        border.color: mkecoinComponents.Style.appWindowBorderColor
+        border.color: MKEcoinComponents.Style.appWindowBorderColor
         border.width: 1
-        color: mkecoinComponents.Style.middlePanelBackgroundColor
+        color: MKEcoinComponents.Style.middlePanelBackgroundColor
     }
     closePolicy: Popup.NoAutoClose
     padding: 20
@@ -70,17 +70,17 @@ Popup {
         spacing: updateDialog.padding
 
         Text {
-            color: mkecoinComponents.Style.defaultFontColor
+            color: MKEcoinComponents.Style.defaultFontColor
             font.bold: true
-            font.family: mkecoinComponents.Style.fontRegular.name
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: 18
-            text: qsTr("New mkecoin version v%1 is available.").arg(updateDialog.version)
+            text: qsTr("New MKEcoin version v%1 is available.").arg(updateDialog.version)
         }
 
         Text {
             id: errorText
             color: "red"
-            font.family: mkecoinComponents.Style.fontRegular.name
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: 18
             text: updateDialog.error
             visible: text
@@ -88,14 +88,14 @@ Popup {
 
         Text {
             id: statusText
-            color: updateDialog.valid ? mkecoinComponents.Style.green : mkecoinComponents.Style.defaultFontColor
-            font.family: mkecoinComponents.Style.fontRegular.name
+            color: updateDialog.valid ? MKEcoinComponents.Style.green : MKEcoinComponents.Style.defaultFontColor
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: 18
             visible: !errorText.visible
 
             text: {
                 if (!updateDialog.url) {
-                    return qsTr("Please visit getmkecoin.org for details") + translationManager.emptyString;
+                    return qsTr("Please visit getMKEcoin.org for details") + translationManager.emptyString;
                 }
                 if (downloader.active) {
                     return "%1 (%2%)"
@@ -112,13 +112,13 @@ Popup {
 
         Rectangle {
             id: progressBar
-            color: mkecoinComponents.Style.lightGreyFontColor
+            color: MKEcoinComponents.Style.lightGreyFontColor
             height: 3
             Layout.fillWidth: true
             visible: updateDialog.valid || downloader.active
 
             Rectangle {
-                color: mkecoinComponents.Style.buttonBackgroundColor
+                color: MKEcoinComponents.Style.buttonBackgroundColor
                 height: parent.height
                 width: parent.width * updateDialog.progress / 100
             }
@@ -128,7 +128,7 @@ Popup {
             Layout.alignment: Qt.AlignRight
             spacing: parent.spacing
 
-            mkecoinComponents.StandardButton {
+            MKEcoinComponents.StandardButton {
                 id: cancelButton
                 fontBold: false
                 primary: !updateDialog.url
@@ -148,7 +148,7 @@ Popup {
                 }
             }
 
-            mkecoinComponents.StandardButton {
+            MKEcoinComponents.StandardButton {
                 id: downloadButton
                 KeyNavigation.tab: cancelButton
                 fontBold: false
@@ -172,7 +172,7 @@ Popup {
                 }
             }
 
-            mkecoinComponents.StandardButton {
+            MKEcoinComponents.StandardButton {
                 id: saveButton
                 KeyNavigation.tab: cancelButton
                 fontBold: false

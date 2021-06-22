@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -32,7 +32,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
 import "../js/Utils.js" as Utils
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 GridLayout {
     columns: 2
@@ -48,15 +48,15 @@ GridLayout {
 
     // TODO: LEGACY; remove these placeHolder variables when
     // the wizards get redesigned to the black-theme
-    property string placeholderFontFamily: mkecoinComponents.Style.fontRegular.name
+    property string placeholderFontFamily: MKEcoinComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 15
-    property string placeholderColor: mkecoinComponents.Style.defaultFontColor
+    property string placeholderColor: MKEcoinComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.35
     property int labelFontSize: 14
 
     property string lineEditBackgroundColor: "transparent"
-    property string lineEditFontColor: mkecoinComponents.Style.defaultFontColor
+    property string lineEditFontColor: MKEcoinComponents.Style.defaultFontColor
     property bool lineEditFontBold: false
     property int lineEditFontSize: 15
 
@@ -82,9 +82,9 @@ GridLayout {
         return addr + ":" + port;
     }
 
-    LineEdit {
+    MKEcoinComponents.LineEdit {
         id: daemonAddr
-        Layout.fillWidth: true
+        Layout.preferredWidth: root.width/3
         placeholderText: qsTr("Remote Node Hostname / IP") + translationManager.emptyString
         placeholderFontFamily: root.placeholderFontFamily
         placeholderFontBold: root.placeholderFontBold
@@ -104,9 +104,9 @@ GridLayout {
         text: initialHostPort[1]
     }
 
-    LineEdit {
+    MKEcoinComponents.LineEdit {
         id: daemonPort
-        Layout.fillWidth: true
+        Layout.preferredWidth: root.width/3
         placeholderText: qsTr("Port") + translationManager.emptyString
         placeholderFontFamily: root.placeholderFontFamily
         placeholderFontBold: root.placeholderFontBold

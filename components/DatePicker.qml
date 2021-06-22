@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -34,15 +34,15 @@ import QtGraphicalEffects 1.0
 import QtQuick.Controls.Styles 1.2
 import FontAwesome 1.0
 
-import "." as mkecoinComponents
-import "effects/" as mkecoinEffects
+import "." as MKEcoinComponents
+import "effects/" as MKEcoinEffects
 
 Item {
     id: datePicker
     readonly property alias expanded: popup.visible
     property date currentDate
     property bool showCurrentDate: true
-    property color backgroundColor : mkecoinComponents.Style.appWindowBorderColor
+    property color backgroundColor : MKEcoinComponents.Style.appWindowBorderColor
     property color errorColor : "red"
     property bool error: false
     property alias inputLabel: inputLabel
@@ -59,16 +59,16 @@ Item {
         height: 22
         width: parent.width
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: inputLabel
             anchors.top: parent.top
             anchors.topMargin: 2
             anchors.left: parent.left
-            font.family: mkecoinComponents.Style.fontLight.name
+            font.family: MKEcoinComponents.Style.fontLight.name
             font.pixelSize: 14
             font.bold: false
             textFormat: Text.RichText
-            color: mkecoinComponents.Style.defaultFontColor
+            color: MKEcoinComponents.Style.defaultFontColor
             themeTransition: false
 
             MouseArea {
@@ -105,7 +105,7 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 2
             anchors.right: parent.right
-            property string headerFontColor: mkecoinComponents.Style.blackTheme ? "#e6e6e6" : "#333333"
+            property string headerFontColor: MKEcoinComponents.Style.blackTheme ? "#e6e6e6" : "#333333"
             spacing: 0
 
             function setDate(date) {
@@ -127,10 +127,10 @@ Item {
                 id: dayInput
                 readOnly: true
                 Layout.preferredWidth: childrenRect.width + 40
-                font.family: mkecoinComponents.Style.fontRegular.name
+                font.family: MKEcoinComponents.Style.fontRegular.name
                 font.pixelSize: 14
                 color: datePicker.error ? errorColor : parent.headerFontColor
-                selectionColor: mkecoinComponents.Style.dimmedFontColor
+                selectionColor: MKEcoinComponents.Style.dimmedFontColor
                 selectByMouse: true
                 horizontalAlignment: TextInput.AlignHCenter
                 maximumLength: 2
@@ -151,10 +151,10 @@ Item {
                 }
             }
 
-            mkecoinComponents.TextPlain {
-                font.family: mkecoinComponents.Style.fontRegular.name
+            MKEcoinComponents.TextPlain {
+                font.family: MKEcoinComponents.Style.fontRegular.name
                 font.pixelSize: 14
-                color: datePicker.error ? errorColor : mkecoinComponents.Style.defaultFontColor
+                color: datePicker.error ? errorColor : MKEcoinComponents.Style.defaultFontColor
                 text: "-"
                 themeTransition: false
             }
@@ -163,10 +163,10 @@ Item {
                 id: monthInput
                 readOnly: true
                 Layout.preferredWidth: childrenRect.width + 40
-                font.family: mkecoinComponents.Style.fontRegular.name
+                font.family: MKEcoinComponents.Style.fontRegular.name
                 font.pixelSize: 14
                 color: datePicker.error ? errorColor : parent.headerFontColor
-                selectionColor: mkecoinComponents.Style.dimmedFontColor
+                selectionColor: MKEcoinComponents.Style.dimmedFontColor
                 selectByMouse: true
                 horizontalAlignment: TextInput.AlignHCenter
                 maximumLength: 2
@@ -186,10 +186,10 @@ Item {
                 }
             }
 
-            mkecoinComponents.TextPlain {
-                font.family: mkecoinComponents.Style.fontRegular.name
+            MKEcoinComponents.TextPlain {
+                font.family: MKEcoinComponents.Style.fontRegular.name
                 font.pixelSize: 14
-                color: datePicker.error ? errorColor : mkecoinComponents.Style.defaultFontColor
+                color: datePicker.error ? errorColor : MKEcoinComponents.Style.defaultFontColor
                 text: "-"
                 themeTransition: false
             }
@@ -197,10 +197,10 @@ Item {
             TextInput {
                 id: yearInput
                 Layout.preferredWidth: childrenRect.width + 60
-                font.family: mkecoinComponents.Style.fontRegular.name
+                font.family: MKEcoinComponents.Style.fontRegular.name
                 font.pixelSize: 14
                 color: datePicker.error ? errorColor : parent.headerFontColor
-                selectionColor: mkecoinComponents.Style.dimmedFontColor
+                selectionColor: MKEcoinComponents.Style.dimmedFontColor
                 selectByMouse: true
                 horizontalAlignment: TextInput.AlignHCenter
                 maximumLength: 4
@@ -222,7 +222,7 @@ Item {
                 Layout.fillWidth: true
                 color: "transparent"
 
-                mkecoinEffects.ImageMask {
+                MKEcoinEffects.ImageMask {
                     id: button
                     anchors.right: parent.right
                     anchors.rightMargin: 10
@@ -232,7 +232,7 @@ Item {
                     width: 12
                     fontAwesomeFallbackIcon: FontAwesome.arrowDown
                     fontAwesomeFallbackSize: 14
-                    color: mkecoinComponents.Style.defaultFontColor
+                    color: MKEcoinComponents.Style.defaultFontColor
                     rotation: datePicker.expanded ? 180 : 0
                 }
 
@@ -261,9 +261,9 @@ Item {
             x: head.x
             y: head.y + head.height - 2
 
-            color: mkecoinComponents.Style.middlePanelBackgroundColor
+            color: MKEcoinComponents.Style.middlePanelBackgroundColor
             border.width: 1
-            border.color: mkecoinComponents.Style.appWindowBorderColor
+            border.color: MKEcoinComponents.Style.appWindowBorderColor
             height: datePicker.expanded ? calendar.height + 2 : 0
             clip: true
 
@@ -286,7 +286,7 @@ Item {
                 anchors.leftMargin: 1
                 anchors.rightMargin: 1
                 anchors.top: parent.top
-                color: mkecoinComponents.Style.appWindowBorderColor
+                color: MKEcoinComponents.Style.appWindowBorderColor
                 height: 1
             }
 
@@ -302,7 +302,7 @@ Item {
 
                 style: CalendarStyle {
                     gridVisible: false
-                    background: Rectangle { color: mkecoinComponents.Style.middlePanelBackgroundColor }
+                    background: Rectangle { color: MKEcoinComponents.Style.middlePanelBackgroundColor }
                     dayDelegate: Item {
                         z: parent.z + 1
                         implicitHeight: implicitWidth
@@ -314,10 +314,10 @@ Item {
                             radius: parent.implicitHeight / 2
                         }
 
-                        mkecoinComponents.TextPlain {
+                        MKEcoinComponents.TextPlain {
                             id: dayText
                             anchors.centerIn: parent
-                            font.family: mkecoinComponents.Style.fontMonoRegular.name
+                            font.family: MKEcoinComponents.Style.fontMonoRegular.name
                             font.pixelSize: {
                                 if(!styleData.visibleMonth) return 12
                                 return 14
@@ -331,22 +331,22 @@ Item {
                             color: {
                               if (currentDate.toDateString() === styleData.date.toDateString()) {
                                   if (dayArea.containsMouse) {
-                                      dayRect.color = mkecoinComponents.Style.buttonBackgroundColorHover;
+                                      dayRect.color = MKEcoinComponents.Style.buttonBackgroundColorHover;
                                   } else {
-                                      dayRect.color = mkecoinComponents.Style.buttonBackgroundColor;
+                                      dayRect.color = MKEcoinComponents.Style.buttonBackgroundColor;
                                   }
                               } else {
                                   if (dayArea.containsMouse) {
-                                      dayRect.color = mkecoinComponents.Style.blackTheme ? "#20FFFFFF" : "#10000000"
+                                      dayRect.color = MKEcoinComponents.Style.blackTheme ? "#20FFFFFF" : "#10000000"
                                   } else {
                                       dayRect.color = "transparent";
                                   }
                               }
                               if(!styleData.valid) return "transparent"
                               if(styleData.date.toDateString() === (new Date()).toDateString()) return "#FFFF00"
-                              if(!styleData.visibleMonth) return mkecoinComponents.Style.lightGreyFontColor
-                              if(dayArea.pressed) return mkecoinComponents.Style.defaultFontColor
-                              return mkecoinComponents.Style.defaultFontColor
+                              if(!styleData.visibleMonth) return MKEcoinComponents.Style.lightGreyFontColor
+                              if(dayArea.pressed) return MKEcoinComponents.Style.defaultFontColor
+                              return MKEcoinComponents.Style.defaultFontColor
                             }
                         }
 
@@ -376,12 +376,12 @@ Item {
                         implicitHeight: 20
                         implicitWidth: calendar.width / 7
 
-                        mkecoinComponents.TextPlain {
+                        MKEcoinComponents.TextPlain {
                             anchors.centerIn: parent
                             elide: Text.ElideRight
-                            font.family: mkecoinComponents.Style.fontMonoRegular.name
+                            font.family: MKEcoinComponents.Style.fontMonoRegular.name
                             font.pixelSize: 12
-                            color: mkecoinComponents.Style.lightGreyFontColor
+                            color: MKEcoinComponents.Style.lightGreyFontColor
                             themeTransition: false
                             text: {
                                 var locale = Qt.locale()
@@ -391,15 +391,15 @@ Item {
                     }
 
                     navigationBar: Rectangle {
-                        color: mkecoinComponents.Style.middlePanelBackgroundColor
+                        color: MKEcoinComponents.Style.middlePanelBackgroundColor
                         implicitWidth: calendar.width
                         implicitHeight: 30
 
-                        mkecoinComponents.TextPlain {
+                        MKEcoinComponents.TextPlain {
                             anchors.centerIn: parent
-                            font.family: mkecoinComponents.Style.fontMonoRegular.name
+                            font.family: MKEcoinComponents.Style.fontMonoRegular.name
                             font.pixelSize: 14
-                            color: mkecoinComponents.Style.dimmedFontColor
+                            color: MKEcoinComponents.Style.dimmedFontColor
                             themeTransition: false
                             text: styleData.title
                         }
@@ -412,7 +412,7 @@ Item {
                             anchors.bottom: parent.bottom
                             width: height
 
-                            mkecoinEffects.ImageMask {
+                            MKEcoinEffects.ImageMask {
                                 id: prevMonthIcon
                                 anchors.centerIn: parent
                                 image: "qrc:///images/prevMonth.png"
@@ -420,7 +420,7 @@ Item {
                                 width: 12
                                 fontAwesomeFallbackIcon: FontAwesome.arrowLeft
                                 fontAwesomeFallbackSize: 14
-                                color: mkecoinComponents.Style.defaultFontColor
+                                color: MKEcoinComponents.Style.defaultFontColor
                             }
 
                             MouseArea {
@@ -438,7 +438,7 @@ Item {
                             anchors.bottom: parent.bottom
                             width: height
 
-                            mkecoinEffects.ImageMask {
+                            MKEcoinEffects.ImageMask {
                                 id: nextMonthIcon
                                 anchors.centerIn: parent
                                 image: "qrc:///images/prevMonth.png"
@@ -447,7 +447,7 @@ Item {
                                 rotation: 180
                                 fontAwesomeFallbackIcon: FontAwesome.arrowLeft
                                 fontAwesomeFallbackSize: 14
-                                color: mkecoinComponents.Style.defaultFontColor
+                                color: MKEcoinComponents.Style.defaultFontColor
                             }
 
                             MouseArea {

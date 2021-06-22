@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 Item {
     id: radioButton
@@ -41,8 +41,8 @@ Item {
     height: 26
     width: layout.width
     // legacy properties
-    property var checkedColor: mkecoinComponents.Style.blackTheme ? "white" : "#666666"
-    property var borderColor: checked ? mkecoinComponents.Style.inputBorderColorActive : mkecoinComponents.Style.inputBorderColorInActive
+    property var checkedColor: MKEcoinComponents.Style.blackTheme ? "white" : "#666666"
+    property var borderColor: checked ? MKEcoinComponents.Style.inputBorderColorActive : MKEcoinComponents.Style.inputBorderColorInActive
 
     function toggle(){
         radioButton.checked = !radioButton.checked
@@ -72,11 +72,11 @@ Item {
             }
         }
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: label
             Layout.leftMargin: 10
-            color: mkecoinComponents.Style.defaultFontColor
-            font.family: mkecoinComponents.Style.fontRegular.name
+            color: MKEcoinComponents.Style.defaultFontColor
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: radioButton.fontSize
             wrapMode: Text.Wrap
         }

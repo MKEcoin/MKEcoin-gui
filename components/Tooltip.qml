@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The mkecoin Project
+// Copyright (c) 2021, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -31,7 +31,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
-import "." as mkecoinComponents
+import "." as MKEcoinComponents
 
 Rectangle {
     property alias text: tooltip.text
@@ -48,7 +48,7 @@ Rectangle {
     Text {
         id: icon
         visible: tooltipIconVisible
-        color: mkecoinComponents.Style.orange
+        color: MKEcoinComponents.Style.orange
         font.family: FontAwesome.fontFamily
         font.pixelSize: 10
         font.styleName: "Regular"
@@ -72,9 +72,9 @@ Rectangle {
         height: tooltip.height + 20
 
         background: Rectangle {
-            border.color: mkecoinComponents.Style.buttonInlineBackgroundColor
+            border.color: MKEcoinComponents.Style.buttonInlineBackgroundColor
             border.width: 1
-            color: mkecoinComponents.Style.titleBarBackgroundGradientStart
+            color: MKEcoinComponents.Style.titleBarBackgroundGradientStart
             radius: 4
         }
         closePolicy: Popup.NoAutoClose
@@ -99,8 +99,8 @@ Rectangle {
                 id: tooltip
                 Layout.maximumWidth: 350
                 width: contentWidth > Layout.maximumWidth ? Layout.maximumWidth : contentWidth
-                color: mkecoinComponents.Style.defaultFontColor
-                font.family: mkecoinComponents.Style.fontRegular.name
+                color: MKEcoinComponents.Style.defaultFontColor
+                font.family: MKEcoinComponents.Style.fontRegular.name
                 font.pixelSize: 12
                 textFormat: Text.RichText
                 wrapMode: Text.WordWrap

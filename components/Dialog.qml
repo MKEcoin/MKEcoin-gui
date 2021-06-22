@@ -1,4 +1,4 @@
-// Copyright (c) 2021, The mkecoin Project
+// Copyright (c) 2021, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -30,7 +30,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 
-import "." as mkecoinComponents
+import "." as MKEcoinComponents
 
 Popup {
     id: dialog
@@ -39,9 +39,9 @@ Popup {
     property alias title: header.text
 
     background: Rectangle {
-        border.color: mkecoinComponents.Style.blackTheme ? Qt.rgba(255, 255, 255, 0.25) : Qt.rgba(0, 0, 0, 0.25)
+        border.color: MKEcoinComponents.Style.blackTheme ? Qt.rgba(255, 255, 255, 0.25) : Qt.rgba(0, 0, 0, 0.25)
         border.width: 1
-        color: mkecoinComponents.Style.blackTheme ? "black" : "white"
+        color: MKEcoinComponents.Style.blackTheme ? "black" : "white"
         radius: 10
     }
     closePolicy: Popup.CloseOnEscape
@@ -56,9 +56,9 @@ Popup {
 
         Text {
             id: header
-            color: mkecoinComponents.Style.defaultFontColor
+            color: MKEcoinComponents.Style.defaultFontColor
             font.bold: true
-            font.family: mkecoinComponents.Style.fontRegular.name
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: 18
             visible: text != ""
         }

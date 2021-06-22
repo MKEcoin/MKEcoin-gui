@@ -1,7 +1,7 @@
 import QtQuick 2.9
 
-import "." as mkecoinComponents
-import "effects/" as mkecoinEffects
+import "." as MKEcoinComponents
+import "effects/" as MKEcoinEffects
 
 Text {
     // When using this component, please note that if you use a color different
@@ -16,21 +16,21 @@ Text {
     property alias tooltipLeft: tooltip.tooltipLeft
     property alias tooltipIconVisible: tooltip.tooltipIconVisible
     property alias tooltipPopup: tooltip.tooltipPopup
-    font.family: mkecoinComponents.Style.fontMedium.name
+    font.family: MKEcoinComponents.Style.fontMedium.name
     font.bold: false
     font.pixelSize: 14
     textFormat: Text.PlainText
 
-    mkecoinEffects.ColorTransition {
+    MKEcoinEffects.ColorTransition {
         enabled: root.themeTransition
         themeTransition: root.themeTransition
         targetObj: root
         duration: 750
-        blackColor: root.themeTransitionBlackColor !== "" ? root.themeTransitionBlackColor : mkecoinComponents.Style._b_defaultFontColor
-        whiteColor: root.themeTransitionWhiteColor !== "" ? root.themeTransitionWhiteColor : mkecoinComponents.Style._w_defaultFontColor
+        blackColor: root.themeTransitionBlackColor !== "" ? root.themeTransitionBlackColor : MKEcoinComponents.Style._b_defaultFontColor
+        whiteColor: root.themeTransitionWhiteColor !== "" ? root.themeTransitionWhiteColor : MKEcoinComponents.Style._w_defaultFontColor
     }
 
-    mkecoinComponents.Tooltip {
+    MKEcoinComponents.Tooltip {
         id: tooltip
         anchors.top: parent.top
         anchors.left: tooltipIconVisible ? parent.right : parent.left

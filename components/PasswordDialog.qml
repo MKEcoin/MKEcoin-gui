@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2019, The mkecoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -34,8 +34,8 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.0
 import FontAwesome 1.0
 
-import "." as mkecoinComponents
-import "effects/" as mkecoinEffects
+import "." as MKEcoinComponents
+import "effects/" as MKEcoinEffects
 import "../js/Utils.js" as Utils
 
 Item {
@@ -165,9 +165,9 @@ Item {
                 Layout.fillWidth: true
 
                 font.pixelSize: 16
-                font.family: mkecoinComponents.Style.fontLight.name
+                font.family: MKEcoinComponents.Style.fontLight.name
 
-                color: mkecoinComponents.Style.defaultFontColor
+                color: MKEcoinComponents.Style.defaultFontColor
             }
 
             Label {
@@ -177,17 +177,17 @@ Item {
                 wrapMode: Text.Wrap
 
                 font.pixelSize: 14
-                font.family: mkecoinComponents.Style.fontLight.name
+                font.family: MKEcoinComponents.Style.fontLight.name
 
-                color: mkecoinComponents.Style.warningColor
+                color: MKEcoinComponents.Style.warningColor
             }
 
             Label {
                 id: errorTextLabel
                 visible: root.errorText || text !== ""
-                color: mkecoinComponents.Style.errorColor
+                color: MKEcoinComponents.Style.errorColor
                 font.pixelSize: 16
-                font.family: mkecoinComponents.Style.fontLight.name
+                font.family: MKEcoinComponents.Style.fontLight.name
                 Layout.fillWidth: true
                 wrapMode: Text.Wrap
             }
@@ -195,15 +195,15 @@ Item {
             Label {
                 id: capsLockTextLabel
                 visible: false
-                color: mkecoinComponents.Style.errorColor
+                color: MKEcoinComponents.Style.errorColor
                 font.pixelSize: 16
-                font.family: mkecoinComponents.Style.fontLight.name
+                font.family: MKEcoinComponents.Style.fontLight.name
                 Layout.fillWidth: true
                 wrapMode: Text.Wrap
                 text: qsTr("CAPSLOCKS IS ON.") + translationManager.emptyString;
             }
 
-            mkecoinComponents.LineEdit {
+            MKEcoinComponents.LineEdit {
                 id: passwordInput1
                 password: true
                 Layout.topMargin: 6
@@ -239,12 +239,12 @@ Item {
                 Layout.fillWidth: true
 
                 font.pixelSize: 16
-                font.family: mkecoinComponents.Style.fontLight.name
+                font.family: MKEcoinComponents.Style.fontLight.name
 
-                color: mkecoinComponents.Style.defaultFontColor
+                color: MKEcoinComponents.Style.defaultFontColor
             }
 
-            mkecoinComponents.LineEdit {
+            MKEcoinComponents.LineEdit {
                 id: passwordInput2
                 passwordLinked: passwordInput1
                 visible: !passwordDialogMode
@@ -276,7 +276,7 @@ Item {
                 Layout.topMargin: 16
                 Layout.alignment: Qt.AlignRight
 
-                mkecoinComponents.StandardButton {
+                MKEcoinComponents.StandardButton {
                     id: cancelButton
                     primary: false
                     small: true
@@ -285,7 +285,7 @@ Item {
                     onClicked: onCancel()
                 }
 
-                mkecoinComponents.StandardButton {
+                MKEcoinComponents.StandardButton {
                     id: okButton
                     fontAwesomeIcon: true
                     rightIcon: okButtonIcon

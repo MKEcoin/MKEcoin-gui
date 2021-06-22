@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018, The mkecoin Project
+// Copyright (c) 2014-2018, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -30,8 +30,8 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
 import FontAwesome 1.0
-import mkecoinComponents.Wallet 1.0
-import "../components" as mkecoinComponents
+import MKEcoinComponents.Wallet 1.0
+import "../components" as MKEcoinComponents
 
 Rectangle {
     id: item
@@ -118,30 +118,30 @@ Rectangle {
             height: 40
             width: 260
 
-            mkecoinComponents.TextPlain {
+            MKEcoinComponents.TextPlain {
                 id: statusText
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.topMargin: 0
-                font.family: mkecoinComponents.Style.fontMedium.name
+                font.family: MKEcoinComponents.Style.fontMedium.name
                 font.bold: true
                 font.pixelSize: 13
-                color: mkecoinComponents.Style.dimmedFontColor
-                opacity: mkecoinComponents.Style.blackTheme ? 0.65 : 0.5
+                color: MKEcoinComponents.Style.dimmedFontColor
+                opacity: MKEcoinComponents.Style.blackTheme ? 0.65 : 0.5
                 text: qsTr("Network status") + translationManager.emptyString
                 themeTransition: false
             }
 
-            mkecoinComponents.TextPlain {
+            MKEcoinComponents.TextPlain {
                 id: statusTextVal
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.topMargin: 14
-                font.family: mkecoinComponents.Style.fontMedium.name
+                font.family: MKEcoinComponents.Style.fontMedium.name
                 font.pixelSize: 20
-                color: mkecoinComponents.Style.defaultFontColor
+                color: MKEcoinComponents.Style.defaultFontColor
                 text: getConnectionStatusString(item.connected) + translationManager.emptyString
-                opacity: mkecoinComponents.Style.blackTheme ? 1.0 : 0.7
+                opacity: MKEcoinComponents.Style.blackTheme ? 1.0 : 0.7
                 themeTransition: false
 
                 MouseArea {
@@ -163,7 +163,7 @@ Rectangle {
                 anchors.left: statusTextVal.right
                 anchors.leftMargin: 16
                 anchors.verticalCenter: parent.verticalCenter
-                color: refreshMouseArea.containsMouse ?  mkecoinComponents.Style.dimmedFontColor : mkecoinComponents.Style.defaultFontColor
+                color: refreshMouseArea.containsMouse ?  MKEcoinComponents.Style.dimmedFontColor : MKEcoinComponents.Style.defaultFontColor
                 font.family: FontAwesome.fontFamilySolid
                 font.pixelSize: 24
                 font.styleName: "Solid"

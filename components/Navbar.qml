@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2021, The mkecoin Project
+// Copyright (c) 2014-2021, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -28,10 +28,10 @@
 
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
-import "." as mkecoinComponents
+import "." as MKEcoinComponents
 
 Rectangle {
-    default property list<mkecoinComponents.NavbarItem> items
+    default property list<MKEcoinComponents.NavbarItem> items
 
     color: "transparent"
     height: grid.height
@@ -42,12 +42,12 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         columnSpacing: 0
-        property string fontColorActive: mkecoinComponents.Style.blackTheme ? "white" : "white"
-        property string fontColorInActive: mkecoinComponents.Style.blackTheme ? "white" : mkecoinComponents.Style.dimmedFontColor
+        property string fontColorActive: MKEcoinComponents.Style.blackTheme ? "white" : "white"
+        property string fontColorInActive: MKEcoinComponents.Style.blackTheme ? "white" : MKEcoinComponents.Style.dimmedFontColor
         property int fontSize: 15
         property bool fontBold: true
-        property var fontFamily: mkecoinComponents.Style.fontRegular.name
-        property string borderColor: mkecoinComponents.Style.blackTheme ? "#808080" : "#B9B9B9"
+        property var fontFamily: MKEcoinComponents.Style.fontRegular.name
+        property string borderColor: MKEcoinComponents.Style.blackTheme ? "#808080" : "#B9B9B9"
         property int textMargin: {
             // left-right margins for a given cell
             if(appWindow.width < 890){
@@ -132,7 +132,7 @@ Rectangle {
                         implicitHeight: children[0].implicitHeight
                         implicitWidth: children[0].implicitWidth
 
-                        mkecoinComponents.TextPlain {
+                        MKEcoinComponents.TextPlain {
                             anchors.centerIn: parent
                             font.family: grid.fontFamily
                             font.pixelSize: grid.fontSize

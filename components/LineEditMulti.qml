@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2019, The mkecoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as mkecoinComponents
+import "../components" as MKEcoinComponents
 
 ColumnLayout {
     id: item
@@ -50,32 +50,33 @@ ColumnLayout {
     property int inputRadius: 4
 
     property bool placeholderCenter: false
-    property string placeholderFontFamily: mkecoinComponents.Style.fontRegular.name
+    property string placeholderFontFamily: MKEcoinComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 18
-    property string placeholderColor: mkecoinComponents.Style.defaultFontColor
+    property string placeholderColor: MKEcoinComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.35
 
     property bool borderDisabled: false
     property string borderColor: {
         if(input.error && input.text !== ""){
-            return mkecoinComponents.Style.inputBorderColorInvalid;
+            return MKEcoinComponents.Style.inputBorderColorInvalid;
         } else if(input.activeFocus){
-            return mkecoinComponents.Style.inputBorderColorActive;
+            return MKEcoinComponents.Style.inputBorderColorActive;
         } else {
-            return mkecoinComponents.Style.inputBorderColorInActive;
+            return MKEcoinComponents.Style.inputBorderColorInActive;
         }
     }
 
     property alias error: input.error
+    property alias cursorPosition: input.cursorPosition
 
-    property string labelFontColor: mkecoinComponents.Style.defaultFontColor
+    property string labelFontColor: MKEcoinComponents.Style.defaultFontColor
     property bool labelFontBold: false
     property int labelFontSize: 16
     property bool labelButtonVisible: false
 
-    property string fontColor: mkecoinComponents.Style.defaultFontColor
-    property string fontFamily: mkecoinComponents.Style.fontRegular.name
+    property string fontColor: MKEcoinComponents.Style.defaultFontColor
+    property string fontFamily: MKEcoinComponents.Style.fontRegular.name
     property bool fontBold: false
     property int fontSize: 16
 
@@ -91,6 +92,8 @@ ColumnLayout {
     signal labelButtonClicked();
     signal inputLabelLinkActivated();
     signal editingFinished();
+    signal returnPressed();
+    signal enterPressed();
 
     onActiveFocusChanged: activeFocus && input.forceActiveFocus()
 
@@ -102,11 +105,11 @@ ColumnLayout {
         height: (inputLabel.height + 10)
         visible: showingHeader ? true : false
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: inputLabel
             anchors.top: parent.top
             anchors.left: parent.left
-            font.family: mkecoinComponents.Style.fontRegular.name
+            font.family: MKEcoinComponents.Style.fontRegular.name
             font.pixelSize: item.labelFontSize
             font.bold: labelFontBold
             textFormat: Text.RichText
@@ -124,13 +127,13 @@ ColumnLayout {
             anchors.right: parent.right
             spacing: 16
 
-            mkecoinComponents.LabelButton {
+            MKEcoinComponents.LabelButton {
                 id: labelButton
                 onClicked: labelButtonClicked()
                 visible: labelButtonVisible
             }
 
-            mkecoinComponents.LabelButton {
+            MKEcoinComponents.LabelButton {
                 id: copyButtonId
                 visible: copyButton && input.text !== ""
                 text: qsTr("Copy") + translationManager.emptyString
@@ -143,7 +146,7 @@ ColumnLayout {
                 }
             }
 
-            mkecoinComponents.LabelButton {
+            MKEcoinComponents.LabelButton {
                 id: pasteButtonId
                 onClicked: {
                     input.clear();
@@ -155,7 +158,7 @@ ColumnLayout {
         }
     }
 
-    mkecoinComponents.InputMulti {
+    MKEcoinComponents.InputMulti {
         id: input
         readOnly: false
         addressValidation: false
@@ -176,8 +179,10 @@ ColumnLayout {
         fontColor: item.fontColor
         mouseSelection: item.mouseSelection
         onEditingFinished: item.editingFinished()
+        Keys.onReturnPressed: item.returnPressed()
+        Keys.onEnterPressed: item.enterPressed()
 
-        mkecoinComponents.TextPlain {
+        MKEcoinComponents.TextPlain {
             id: placeholderLabel
             visible: input.text ? false : true
             anchors.verticalCenter: parent.verticalCenter
