@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -314,16 +314,8 @@ Rectangle {
                             break;
                     }
 
-                    var _restoreHeight = 0;
                     if(restoreHeight.text){
-                        // Parse date string or restore height as integer
-                        if(restoreHeight.text.indexOf('-') === 4 && restoreHeight.text.length === 10){
-                            _restoreHeight = Wizard.getApproximateBlockchainHeight(restoreHeight.text, Utils.netTypeToString());
-                        } else {
-                            _restoreHeight = parseInt(restoreHeight.text)
-                        }
-
-                        wizardController.walletOptionsRestoreHeight = _restoreHeight;
+                        wizardController.walletOptionsRestoreHeight = Utils.parseDateStringOrRestoreHeightAsInteger(restoreHeight.text);
                     }
 
                     wizardStateView.state = "wizardRestoreWallet2";

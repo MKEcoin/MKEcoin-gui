@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021, The MKEcoin Project
+// Copyright (c) 2014-2019, The MKEcoin Project
 // 
 // All rights reserved.
 // 
@@ -36,6 +36,7 @@ import "../components"
 import "../components" as MKEcoinComponents
 
 GridLayout {
+    id: grid
     Layout.fillWidth: true
     property alias walletName: walletName
     property alias walletLocation: walletLocation
@@ -61,7 +62,7 @@ GridLayout {
 
     MKEcoinComponents.LineEdit {
         id: walletName
-        Layout.fillWidth: true
+        Layout.preferredWidth: grid.width/3
 
         function verify(){
             if(walletLocation === "" || /[\\\/]/.test(walletName.text)) return false;
@@ -82,7 +83,7 @@ GridLayout {
 
     MKEcoinComponents.LineEdit {
         id: walletLocation
-        Layout.fillWidth: true
+        Layout.preferredWidth: grid.width/3
 
         labelText: qsTr("Wallet location") + translationManager.emptyString
         labelFontSize: 14
