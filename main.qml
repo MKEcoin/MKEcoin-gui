@@ -1005,6 +1005,7 @@ ApplicationWindow {
         if (result.indexOf("error|") === 0) {
             var errorString = result.split("|")[1];
             informationPopup.text = qsTr("Couldn't generate a proof because of the following reason: \n") + errorString + translationManager.emptyString;
+            informationPopup.text  = result;
             informationPopup.icon = StandardIcon.Critical;
         } else {
             informationPopup.text  = result;
