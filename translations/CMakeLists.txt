@@ -42,7 +42,6 @@ add_custom_command(
   DEPENDS ${QM_FILES}
   VERBATIM
 )
-set_source_files_properties(${TRANSLATIONS_CPP} PROPERTIES SKIP_AUTOMOC ON)
 set_source_files_properties(${TRANSLATIONS_CPP} PROPERTIES SKIP_AUTOUIC ON)
 
 add_library(translations ${TRANSLATIONS_CPP})
