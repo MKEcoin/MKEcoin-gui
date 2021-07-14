@@ -1,7 +1,4 @@
 add_subdirectory(QR-Code-scanner)
-add_subdirectory(daemon)
-add_subdirectory(libwalletqt)
-add_subdirectory(model)
 add_subdirectory(openpgp)
 add_subdirectory(zxcvbn-c)
 
@@ -48,13 +45,6 @@ if(APPLE)
     list(APPEND SOURCE_FILES "qt/macoshelper.mm")
 endif()
 
-if(ENABLE_PASS_STRENGTH_METER)
-    file(GLOB PASS_STRENGTH_FILES
-        "zxcvbn-c/zxcvbn.h"
-        "zxcvbn-c/zxcvbn.c"
-    )
-endif()
-
 set(EXECUTABLE_FLAG)
 if(MINGW)
     set(EXECUTABLE_FLAG WIN32)
@@ -76,7 +66,6 @@ endif()
 
 set(MKEcoin_wallet_gui_sources
     ${SOURCE_FILES}
-    ${PASS_STRENGTH_FILES}
     ${RESOURCES}
 )
 
@@ -99,10 +88,6 @@ message(STATUS "OpenGL: include dir at ${OPENGL_INCLUDE_DIR}")
 message(STATUS "OpenGL: libraries at ${OPENGL_LIBRARIES}")
 
 target_include_directories(MKEcoin-wallet-gui PUBLIC ${Qt5Gui_PRIVATE_INCLUDE_DIRS})
-
-file(GLOB_RECURSE SRC_SOURCES *.cpp)
-file(GLOB_RECURSE SRC_HEADERS *.h)
-
 target_include_directories(MKEcoin-wallet-gui PUBLIC
 	${CMAKE_SOURCE_DIR}/MKEcoin/include
     ${CMAKE_SOURCE_DIR}/MKEcoin/src
@@ -148,6 +133,7 @@ target_link_libraries(MKEcoin-wallet-gui
     openpgp
     qrdecoder
     translations
+    zxcvbn
 )
 
 if(X11_FOUND)
