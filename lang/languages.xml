@@ -18,9 +18,6 @@ Esperanto
 Lojban
 -->
         <language display_name="English (US)" locale="en_US" wallet_language="English" flag="/lang/flags/us.png" qs="none"/>
-        <!-- <language display_name="English (GB)" locale="en_GB" wallet_language="English" flag="/lang/flags/gb.png" qs="none"/> -->
-        <!-- <language display_name="English (ZA)" locale="en_SA" wallet_language="English" flag="/lang/flags/za.png" qs="none"/> -->
-        <!-- <language display_name="العربية (PS)" locale="ar_PS" wallet_language="English" flag="/lang/flags/ps.png" qs="none"/> -->
         <language display_name="Deutsch" locale="de_DE" wallet_language="Deutsch" flag="/lang/flags/de.png" qs="none"/>
         <language display_name="Esperanto" locale="eo" wallet_language="Esperanto" flag="/lang/flags/esperanto.png" qs="none"/>
         <language display_name="Español" locale="es_ES" wallet_language="Español" flag="/lang/flags/es.png" qs="none"/>
@@ -53,12 +50,5 @@ Lojban
         <language display_name="Українська" locale="uk_UA" wallet_language="English" flag="/lang/flags/ua.png" qs="none"/>
         <language display_name="Lietuvių" locale="lt_LT" wallet_language="English" flag="/lang/flags/lt.png" qs="none"/>
         <language display_name="Suomi" locale="fi_FI" wallet_language="English" flag="/lang/flags/fi.png" qs="none"/>
-        <language display_name="Български" locale="bg_BG" wallet_language="English" flag="/lang/flags/bg.png" qs="none"/>
         <language display_name="Norwegian" locale="nb_NO" wallet_language="English" flag="/lang/flags/nb_NO.png" qs="none"/>
-        <!-- <language display_name="اُردُو" locale="ur_UR" wallet_language="English" flag="/lang/flags/pk.png" qs="none"/> -->
-        <!-- <language display_name="فارسی" locale="fa_FA" wallet_language="English" flag="/lang/flags/ir.png" qs="none"/> -->
-        <!-- <language display_name="Zulu" locale="zu_ZU" wallet_language="English" flag="/lang/flags/za.png" qs="none"/> -->
-        <!-- <language display_name="کورمانجی" locale="kmr_KMR" wallet_language="English" flag="/lang/flags/ku.png" qs="none"/> -->
-        <!-- <language display_name="বাংলা" locale="bn_BN" wallet_language="English" flag="/lang/flags/bd.png" qs="none"/> -->
-        <!-- <language display_name="Gaeilge" locale="ga_GA" wallet_language="English" flag="/lang/flags/irl.png" qs="none"/> -->
 </languages>
