@@ -54,10 +54,10 @@ ColumnLayout {
     property alias labelWrapMode: dropdownLabel.wrapMode
     property alias labelHorizontalAlignment: dropdownLabel.horizontalAlignment
     property bool showingHeader: dropdownLabel.text !== ""
-    property int labelFontSize: 16
+    property int labelFontSize: 14
     property bool labelFontBold: false
     property int dropdownHeight: 39
-    property int fontSize: 16
+    property int fontSize: 14
     property int fontItemSize: 14
     property string colorBorder: MKEcoinComponents.Style.inputBorderColorInActive
     property string colorHeaderBackground: "transparent"
@@ -90,7 +90,7 @@ ColumnLayout {
 
     Rectangle {
         id: head
-        color: "transparent"
+        color: dropArea.containsMouse ? MoneroComponents.Style.titleBarButtonHoverColor : "transparent"
         border.width: dropdown.headerBorder ? 1 : 0
         border.color: dropdown.colorBorder
         radius: 4
@@ -128,8 +128,12 @@ ColumnLayout {
                 width: 12
                 fontAwesomeFallbackIcon: FontAwesome.arrowDown
                 fontAwesomeFallbackSize: 14
+<<<<<<< HEAD
                 color: MKEcoinComponents.Style.defaultFontColor
                 rotation: dropdown.expanded ? 180  : 0
+=======
+                color: MoneroComponents.Style.defaultFontColor
+>>>>>>> b58bff39a04df3eefa016e283af6be73f58a9e18
             }
         }
 
@@ -138,7 +142,7 @@ ColumnLayout {
             anchors.fill: parent
             onClicked: dropdown.expanded ? popup.close() : popup.open()
             hoverEnabled: true
-            cursorShape: Qt.PointingHandCursor
+            cursorShape: Qt.ArrowCursor
         }
     }
 
@@ -209,25 +213,11 @@ ColumnLayout {
                             text: ""
                         }
 
-                        Rectangle {
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            width: 3; height: 3
-                            color: parent.color
-                        }
-
-                        Rectangle {
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            width: 3; height: 3
-                            color: parent.color
-                        }
-
                         MouseArea {
                             id: itemArea
                             anchors.fill: parent
                             hoverEnabled: true
-                            cursorShape: Qt.PointingHandCursor
+                            cursorShape: Qt.ArrowCursor
 
                             onClicked: {
                                 popup.close()

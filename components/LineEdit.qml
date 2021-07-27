@@ -78,10 +78,17 @@ ColumnLayout {
 
     property bool borderDisabled: false
     property string borderColor: {
+<<<<<<< HEAD
         if(error && input.text !== ""){
             return MKEcoinComponents.Style.inputBorderColorInvalid;
         } else if(input.activeFocus){
             return MKEcoinComponents.Style.inputBorderColorActive;
+=======
+        if ((error && input.text !== "") || (errorWhenEmpty && input.text == "")) {
+            return MoneroComponents.Style.inputBorderColorInvalid;
+        } else if (input.activeFocus) {
+            return MoneroComponents.Style.inputBorderColorActive;
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
         } else {
             return MKEcoinComponents.Style.inputBorderColorInActive;
         }
@@ -92,6 +99,7 @@ ColumnLayout {
     property bool fontBold: false
     property alias fontColor: input.color
     property bool error: false
+    property bool errorWhenEmpty: false
     property alias labelText: inputLabel.text
     property alias labelColor: inputLabel.color
     property alias labelTextFormat: inputLabel.textFormat

@@ -59,10 +59,27 @@ ColumnLayout {
             Rectangle {
                 height: 30
                 Layout.fillWidth: true
+<<<<<<< HEAD
                 color: itemMouseArea.containsMouse || index === remoteNodesModel.selected ? MKEcoinComponents.Style.titleBarButtonHoverColor : "transparent"
+=======
+                color: itemMouseArea.containsMouse || trustedDaemonCheckMark.labelMouseArea.containsMouse || index === remoteNodesModel.selected ? MoneroComponents.Style.titleBarButtonHoverColor : "transparent"
+>>>>>>> b58bff39a04df3eefa016e283af6be73f58a9e18
 
                 Rectangle {
+<<<<<<< HEAD
                     color: MKEcoinComponents.Style.appWindowBorderColor
+=======
+                    visible: index === remoteNodesModel.selected
+                    Layout.fillHeight: true
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    color: "darkgrey"
+                    width: 2
+                }
+
+                Rectangle {
+                    color: MoneroComponents.Style.appWindowBorderColor
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
                     anchors.right: parent.right
                     anchors.left: parent.left
                     anchors.top: parent.top
@@ -80,14 +97,39 @@ ColumnLayout {
                     anchors.fill: parent
                     anchors.rightMargin: 80
                     color: "transparent"
+                    property var trusted: remoteNodesModel.get(index).trusted
 
+<<<<<<< HEAD
                     MKEcoinComponents.TextPlain {
                         color: index === remoteNodesModel.selected ? MKEcoinComponents.Style.defaultFontColor : MKEcoinComponents.Style.dimmedFontColor
+=======
+                    MoneroComponents.TextPlain {
+                        id: addressText
+                        width: parent.width - trustedDaemonCheckMark.width
+                        color: index === remoteNodesModel.selected ? MoneroComponents.Style.defaultFontColor : MoneroComponents.Style.dimmedFontColor
+>>>>>>> b58bff39a04df3eefa016e283af6be73f58a9e18
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 6
                         font.pixelSize: 16
                         text: address
+                        themeTransition: false
+                        elide: Text.ElideMiddle
+                    }
+
+                    MoneroComponents.Label {
+                        id: trustedDaemonCheckMark
+                        anchors.left: addressText.right
+                        anchors.leftMargin: 6
+                        anchors.verticalCenter: parent.verticalCenter
+                        z: itemMouseArea.z + 1
+                        fontSize: 16
+                        fontFamily: FontAwesome.fontFamilySolid
+                        fontColor: index === remoteNodesModel.selected ? MoneroComponents.Style.defaultFontColor : MoneroComponents.Style.dimmedFontColor
+                        styleName: "Solid"
+                        visible: trusted
+                        text: FontAwesome.shieldAlt
+                        tooltip: qsTr("Trusted daemon") + translationManager.emptyString
                         themeTransition: false
                     }
 
@@ -103,9 +145,8 @@ ColumnLayout {
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
-                    anchors.rightMargin: 6
                     height: 30
-                    spacing: 10
+                    spacing: 2
 
                     MKEcoinComponents.InlineButton {
                         buttonColor: "transparent"

@@ -95,12 +95,23 @@ Rectangle {
         delay: 200
 
         RowLayout {
+            Layout.maximumWidth: 350
+
             Text {
                 id: tooltip
+<<<<<<< HEAD
                 Layout.maximumWidth: 350
+<<<<<<< HEAD
                 width: contentWidth > Layout.maximumWidth ? Layout.maximumWidth : contentWidth
                 color: MKEcoinComponents.Style.defaultFontColor
                 font.family: MKEcoinComponents.Style.fontRegular.name
+=======
+=======
+                width: contentWidth
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
+                color: MoneroComponents.Style.defaultFontColor
+                font.family: MoneroComponents.Style.fontRegular.name
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                 font.pixelSize: 12
                 textFormat: Text.RichText
                 wrapMode: Text.WordWrap
