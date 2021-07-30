@@ -160,6 +160,9 @@ Rectangle {
                 placeholderFontSize: 15
                 inputHeight: 34
                 onTextUpdated: {
+                    if (!sortAndFilter.collapsed) {
+                        sortAndFilter.collapsed = true;
+                    }
                     if(searchInput.text != null && searchInput.text.length >= 3){
                         root.sortSearchString = searchInput.text;
                         root.reset();
@@ -1717,6 +1720,10 @@ Rectangle {
 
         console.log("getProof: Generate clicked: txid " + hash + ", address " + address);
         middlePanel.getProofClicked(hash, address, '');
+        informationPopup.title  = qsTr("Payment proof") + translationManager.emptyString;
+        informationPopup.text = qsTr("Generating payment proof") + "..." + translationManager.emptyString;
+        informationPopup.onCloseCallback = null
+        informationPopup.open()
     }
 
     function toClipboard(text){

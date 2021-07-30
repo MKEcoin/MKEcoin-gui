@@ -285,6 +285,9 @@ Rectangle {
                                     if (!parsed.error) {
                                         fillPaymentDetails(parsed.address, parsed.payment_id, parsed.amount, parsed.tx_description, parsed.recipient_name);
                                         break;
+                                    } else if (walletManager.addressValid(codes[index], appWindow.persistentSettings.nettype)) {
+                                        fillPaymentDetails(codes[index]);
+                                        break;
                                     }
                                 }
                             }
@@ -379,8 +382,13 @@ Rectangle {
                                 Layout.fillWidth: true
                                 addressValidation: true
                                 borderDisabled: true
+<<<<<<< HEAD
                                 fontColor: error ? MKEcoinComponents.Style.errorColor : MKEcoinComponents.Style.defaultFontColor
                                 fontFamily: MKEcoinComponents.Style.fontMonoRegular.name
+=======
+                                fontColor: error && text != "" ? MoneroComponents.Style.errorColor : MoneroComponents.Style.defaultFontColor
+                                fontFamily: MoneroComponents.Style.fontMonoRegular.name
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
                                 fontSize: 14
                                 inputPaddingBottom: 0
                                 inputPaddingTop: 0
@@ -700,12 +708,19 @@ Rectangle {
                     currentIndex: 0
                     dataModel: priorityModelV5
                     labelText: qsTr("Transaction priority") + translationManager.emptyString
+                    labelFontSize: 16
                 }
 
                 MKEcoinComponents.TextPlain {
                     id: feeLabel
+<<<<<<< HEAD
                     Layout.alignment: Qt.AlignVCenter
                     font.family: MKEcoinComponents.Style.fontRegular.name
+=======
+                    Layout.alignment: Qt.AlignBottom
+                    Layout.bottomMargin: 11
+                    font.family: MoneroComponents.Style.fontRegular.name
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                     font.pixelSize: 14
                     color: MKEcoinComponents.Style.defaultFontColor
                     opacity: 0.7
@@ -788,9 +803,11 @@ Rectangle {
                   }
               }
 
-              LineEditMulti {
+              LineEdit {
                   id: descriptionLine
-                  placeholderText: qsTr("Saved to local wallet history") + translationManager.emptyString
+                  placeholderFontSize: 16
+                  fontSize: 16
+                  placeholderText: qsTr("Saved to local wallet history") + " (" + qsTr("only visible to you") + ")" + translationManager.emptyString
                   Layout.fillWidth: true
                   visible: descriptionCheckbox.checked
               }

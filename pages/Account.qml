@@ -103,7 +103,12 @@ Rectangle {
 
                 MKEcoinComponents.TextPlain {
                     id: balanceAll
+<<<<<<< HEAD
                     font.family: MKEcoinComponents.Style.fontMonoRegular.name;
+=======
+                    Layout.rightMargin: 87
+                    font.family: MoneroComponents.Style.fontMonoRegular.name;
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                     font.pixelSize: 16
                     color: MKEcoinComponents.Style.defaultFontColor
 
@@ -115,7 +120,8 @@ Rectangle {
                         onExited: parent.color = MKEcoinComponents.Style.defaultFontColor
                         onClicked: {
                             console.log("Copied to clipboard");
-                            clipboard.setText(parent.text);
+                            var balanceAllNumberOnly = parent.text.slice(0, -4);
+                            clipboard.setText(balanceAllNumberOnly);
                             appWindow.showStatusMessage(qsTr("Copied to clipboard"),3)
                         }
                     }
@@ -136,7 +142,12 @@ Rectangle {
 
                 MKEcoinComponents.TextPlain {
                     id: unlockedBalanceAll
+<<<<<<< HEAD
                     font.family: MKEcoinComponents.Style.fontMonoRegular.name;
+=======
+                    Layout.rightMargin: 87
+                    font.family: MoneroComponents.Style.fontMonoRegular.name;
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                     font.pixelSize: 16
                     color: MKEcoinComponents.Style.defaultFontColor
 
@@ -148,7 +159,8 @@ Rectangle {
                         onExited: parent.color = MKEcoinComponents.Style.defaultFontColor
                         onClicked: {
                             console.log("Copied to clipboard");
-                            clipboard.setText(parent.text);
+                            var unlockedBalanceAllNumberOnly = parent.text.slice(0, -4);
+                            clipboard.setText(unlockedBalanceAllNumberOnly);
                             appWindow.showStatusMessage(qsTr("Copied to clipboard"),3)
                         }
                     }
@@ -193,7 +205,20 @@ Rectangle {
                         color: itemMouseArea.containsMouse || index === currentAccountIndex ? MKEcoinComponents.Style.titleBarButtonHoverColor : "transparent"
 
                         Rectangle {
+<<<<<<< HEAD
                             color: MKEcoinComponents.Style.appWindowBorderColor
+=======
+                            visible: index === currentAccountIndex
+                            Layout.fillHeight: true
+                            anchors.top: parent.top
+                            anchors.bottom: parent.bottom
+                            color: "darkgrey"
+                            width: 2
+                        }
+
+                        Rectangle {
+                            color: MoneroComponents.Style.appWindowBorderColor
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
                             anchors.right: parent.right
                             anchors.left: parent.left
                             anchors.top: parent.top
@@ -241,7 +266,7 @@ Rectangle {
                                 id: addressLabel
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 anchors.verticalCenter: parent.verticalCenter
-                                anchors.left: mainLayout.width >= 590 ? balanceTextLabel.left : balanceNumberLabel.left
+                                anchors.left: balanceNumberLabel.left
                                 anchors.leftMargin: -addressLabel.width - 30
                                 fontSize: 16
                                 fontFamily: MKEcoinComponents.Style.fontMonoRegular.name;
@@ -249,6 +274,7 @@ Rectangle {
                                 themeTransition: false
                             }
 
+<<<<<<< HEAD
                             MKEcoinComponents.Label {
                                 id: balanceTextLabel
                                 visible: mainLayout.width >= 590
@@ -262,16 +288,24 @@ Rectangle {
                             }
 
                             MKEcoinComponents.Label {
+=======
+                            MoneroComponents.Label {
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 id: balanceNumberLabel
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.left: parent.right
                                 anchors.leftMargin: -balanceNumberLabel.width
                                 fontSize: 16
+<<<<<<< HEAD
                                 fontFamily: MKEcoinComponents.Style.fontMonoRegular.name;
                                 text: balance
+=======
+                                fontFamily: MoneroComponents.Style.fontMonoRegular.name;
+                                text: balance + " XMR"
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 elide: Text.ElideRight
-                                textWidth: mainLayout.width < 660 ? 70 : 135
+                                textWidth: 180
                                 themeTransition: false
                             }
 
@@ -300,8 +334,14 @@ Rectangle {
                                 image: "qrc:///images/edit.svg"
                                 fontAwesomeFallbackIcon: FontAwesome.edit
                                 fontAwesomeFallbackSize: 22
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+                                fontAwesomeFallbackOpacity: 0.5
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 Layout.preferredWidth: 23
                                 Layout.preferredHeight: 21
                                 tooltip: qsTr("Edit account label") + translationManager.emptyString
@@ -314,8 +354,14 @@ Rectangle {
                                 image: "qrc:///images/copy.svg"
                                 fontAwesomeFallbackIcon: FontAwesome.clipboard
                                 fontAwesomeFallbackSize: 22
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+                                fontAwesomeFallbackOpacity: 0.5
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 Layout.preferredWidth: 16
                                 Layout.preferredHeight: 21
                                 tooltip: qsTr("Copy address to clipboard") + translationManager.emptyString
@@ -380,8 +426,8 @@ Rectangle {
             subaddressAccountListView.model = appWindow.currentWallet.subaddressAccountModel;
             appWindow.currentWallet.subaddress.refresh(appWindow.currentWallet.currentSubaddressAccount)
 
-            balanceAll.text = walletManager.displayAmount(appWindow.currentWallet.balanceAll())
-            unlockedBalanceAll.text = walletManager.displayAmount(appWindow.currentWallet.unlockedBalanceAll()) 
+            balanceAll.text = walletManager.displayAmount(appWindow.currentWallet.balanceAll()) + " XMR"
+            unlockedBalanceAll.text = walletManager.displayAmount(appWindow.currentWallet.unlockedBalanceAll()) + " XMR"
         }
     }
 

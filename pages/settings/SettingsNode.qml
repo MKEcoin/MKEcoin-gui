@@ -72,7 +72,11 @@ Rectangle{
                 Layout.fillHeight: true
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
+<<<<<<< HEAD
                 color: MKEcoinComponents.Style.blackTheme ? "white" : "darkgrey"
+=======
+                color: "darkgrey"
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
                 width: 2
             }
 
@@ -165,7 +169,11 @@ Rectangle{
                 Layout.fillHeight: true
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
+<<<<<<< HEAD
                 color: MKEcoinComponents.Style.blackTheme ? "white" : "darkgrey"
+=======
+                color: "darkgrey"
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
                 width: 2
             }
 

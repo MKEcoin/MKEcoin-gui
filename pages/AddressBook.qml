@@ -208,8 +208,13 @@ Rectangle {
                             MKEcoinComponents.IconButton {
                                 id: sendToButton
                                 image: "qrc:///images/arrow-right-in-circle-outline-medium-white.svg"
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 fontAwesomeFallbackIcon: FontAwesome.arrowRight
                                 fontAwesomeFallbackSize: 22
                                 fontAwesomeFallbackOpacity: 0.5
@@ -237,8 +242,13 @@ Rectangle {
                             MKEcoinComponents.IconButton {
                                 id: renameButton
                                 image: "qrc:///images/edit.svg"
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 fontAwesomeFallbackIcon: FontAwesome.edit
                                 fontAwesomeFallbackSize: 22
                                 fontAwesomeFallbackOpacity: 0.5
@@ -255,8 +265,13 @@ Rectangle {
                             MKEcoinComponents.IconButton {
                                 id: copyButton
                                 image: "qrc:///images/copy.svg"
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 fontAwesomeFallbackIcon: FontAwesome.clipboard
                                 fontAwesomeFallbackSize: 22
                                 fontAwesomeFallbackOpacity: 0.5
@@ -345,8 +360,36 @@ Rectangle {
                 onEnterPressed: addButton.enabled ? addButton.clicked() : ""
                 onReturnPressed: addButton.enabled ? addButton.clicked() : ""
 
+<<<<<<< HEAD
                 MKEcoinComponents.InlineButton {
                     buttonColor: MKEcoinComponents.Style.orange
+=======
+                MoneroComponents.InlineButton {
+                    fontFamily: FontAwesome.fontFamilySolid
+                    fontStyleName: "Solid"
+                    fontPixelSize: 18
+                    text: FontAwesome.desktop
+                    tooltip: qsTr("Grab QR code from screen") + translationManager.emptyString
+                    onClicked: {
+                        clearFields();
+                        const codes = oshelper.grabQrCodesFromScreen();
+                        for (var index = 0; index < codes.length; ++index) {
+                            const parsed = walletManager.parse_uri_to_object(codes[index]);
+                            if (!parsed.error) {
+                                addressLine.text = parsed.address
+                                descriptionLine.text = parsed.recipient_name
+                                break;
+                            } else if (walletManager.addressValid(codes[index], appWindow.persistentSettings.nettype)) {
+                                addressLine.text = codes[index];
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                MoneroComponents.InlineButton {
+                    buttonColor: MoneroComponents.Style.orange
+>>>>>>> 51828babbb63819ec6fb3ce03b2b0cd2a7c5c462
                     fontFamily: FontAwesome.fontFamily
                     text: FontAwesome.qrcode
                     visible : appWindow.qrScannerEnabled && !addressLine.text
@@ -509,7 +552,7 @@ Rectangle {
     function updateFromQrCode(address, payment_id, amount, tx_description, recipient_name) {
         console.log("updateFromQrCode")
         addressLine.text = address
-        descriptionLine.text = recipient_name + " " + tx_description
+        descriptionLine.text = recipient_name
         cameraUi.qrcode_decoded.disconnect(updateFromQrCode)
     }
 

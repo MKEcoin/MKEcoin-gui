@@ -72,17 +72,198 @@ Rectangle {
         anchors.top: parent.top
         anchors.right: parent.right
 
-        spacing: 20
+        spacing: 15
+
+        ColumnLayout {
+            id: selectedAddressDetailsColumn
+            Layout.alignment: Qt.AlignHCenter
+            spacing: 0
+            property int qrSize: 220
+
+<<<<<<< HEAD
+            MKEcoinComponents.LabelSubheader {
+=======
+            Rectangle {
+                id: qrContainer
+                color: MoneroComponents.Style.blackTheme ? "white" : "transparent"
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter
+                Layout.maximumWidth: parent.qrSize
+                Layout.preferredHeight: width
+                radius: 4
+
+                Image {
+                    id: qrCode
+                    anchors.fill: parent
+                    anchors.margins: 1
+                    smooth: false
+                    fillMode: Image.PreserveAspectFit
+                    source: "image://qrcode/" + TxUtils.makeQRCodeString(appWindow.current_address)
+
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        acceptedButtons: Qt.LeftButton | Qt.RightButton
+                        onClicked: {
+                            if (mouse.button == Qt.LeftButton){
+                                selectedAddressDetailsColumn.qrSize = selectedAddressDetailsColumn.qrSize == 220 ? 300 : 220;
+                            } else if (mouse.button == Qt.RightButton){
+                                qrMenu.x = this.mouseX;
+                                qrMenu.y = this.mouseY;
+                                qrMenu.open()
+                            }
+                        }
+                    }
+                }
+
+                Menu {
+                    id: qrMenu
+                    title: "QrCode"
+
+                    MenuItem {
+                        text: qsTr("Save as Image") + translationManager.emptyString;
+                        onTriggered: qrFileDialog.open()
+                    }
+                }
+            }
+
+            MoneroComponents.TextPlain {
+                id: selectedaddressIndex
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: 220
+                Layout.maximumWidth: 220
+                Layout.topMargin: 15
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Address #") + subaddressListView.currentIndex + translationManager.emptyString
+                wrapMode: Text.WordWrap
+                font.family: MoneroComponents.Style.fontRegular.name
+                font.pixelSize: 17
+                textFormat: Text.RichText
+                color: MoneroComponents.Style.defaultFontColor
+                themeTransition: false
+            }
+
+            MoneroComponents.TextPlain {
+                id: selectedAddressDrescription
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: 220
+                Layout.maximumWidth: 220
+                Layout.topMargin: 10
+                horizontalAlignment: Text.AlignHCenter
+                text: "(" + qsTr("no label") + ")" + translationManager.emptyString
+                wrapMode: Text.WordWrap
+                font.family: MoneroComponents.Style.fontRegular.name
+                font.pixelSize: 17
+                textFormat: Text.RichText
+                color: selectedAddressDrescriptionMouseArea.containsMouse ? MoneroComponents.Style.orange : MoneroComponents.Style.dimmedFontColor
+                themeTransition: false
+                tooltip: subaddressListView.currentIndex > 0 ? qsTr("Edit address label") : "" + translationManager.emptyString
+                MouseArea {
+                    id: selectedAddressDrescriptionMouseArea
+                    visible: subaddressListView.currentIndex > 0
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onEntered: parent.tooltip ? parent.tooltipPopup.open() : ""
+                    onExited: parent.tooltip ? parent.tooltipPopup.close() : ""
+                    onClicked: {
+                        renameSubaddressLabel(appWindow.current_subaddress_table_index);
+                    }
+                }
+            }
+
+            MoneroComponents.TextPlain {
+                id: selectedAddress
+                Layout.alignment: Qt.AlignHCenter
+                Layout.maximumWidth: 300
+                Layout.topMargin: 11
+                text: appWindow.current_address ? appWindow.current_address : ""
+                horizontalAlignment: TextInput.AlignHCenter
+                wrapMode: Text.Wrap
+                textFormat: Text.RichText
+                color: selectedAddressMouseArea.containsMouse ? MoneroComponents.Style.orange : MoneroComponents.Style.defaultFontColor
+                font.pixelSize: 15
+                font.family: MoneroComponents.Style.fontRegular.name
+                themeTransition: false
+                tooltip: qsTr("Copy address to clipboard") + translationManager.emptyString
+                MouseArea {
+                    id: selectedAddressMouseArea
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onEntered: parent.tooltip ? parent.tooltipPopup.open() : ""
+                    onExited: parent.tooltip ? parent.tooltipPopup.close() : ""
+                    onClicked: {
+                        clipboard.setText(appWindow.current_address);
+                        appWindow.showStatusMessage(qsTr("Address copied to clipboard") + translationManager.emptyString, 3);
+                    }
+                }
+            }
+
+            MoneroComponents.StandardButton {
+                Layout.preferredWidth: 220
+                Layout.alignment: Qt.AlignHCenter
+                Layout.topMargin: 18
+                small: true
+                text: qsTr("Show on device") + translationManager.emptyString
+                fontSize: 14
+                visible: appWindow.currentWallet ? appWindow.currentWallet.isHwBacked() : false
+                onClicked: {
+                    appWindow.currentWallet.deviceShowAddressAsync(
+                        appWindow.currentWallet.currentSubaddressAccount,
+                        appWindow.current_subaddress_table_index,
+                        '');
+                }
+            }
+        }
 
         ColumnLayout {
             id: addressRow
             spacing: 0
 
-            MKEcoinComponents.LabelSubheader {
-                Layout.fillWidth: true
-                fontSize: 24
-                textFormat: Text.RichText
-                text: qsTr("Addresses") + translationManager.emptyString
+            RowLayout {
+                spacing: 0
+
+                MoneroComponents.LabelSubheader {
+                    Layout.fillWidth: true
+                    fontSize: 24
+                    textFormat: Text.RichText
+                    text: qsTr("Addresses") + translationManager.emptyString
+                }
+
+                MoneroComponents.StandardButton {
+                    id: createAddressButton
+                    small: true
+                    text: qsTr("Create new address") + translationManager.emptyString
+                    fontSize: 13
+                    onClicked: {
+                        inputDialog.labelText = qsTr("Set the label of the new address:") + translationManager.emptyString
+                        inputDialog.onAcceptedCallback = function() {
+                            appWindow.currentWallet.subaddress.addRow(appWindow.currentWallet.currentSubaddressAccount, inputDialog.inputText)
+                            current_subaddress_table_index = appWindow.currentWallet.numSubaddresses(appWindow.currentWallet.currentSubaddressAccount) - 1
+                            subaddressListView.currentIndex = current_subaddress_table_index
+                        }
+                        inputDialog.onRejectedCallback = null;
+                        inputDialog.open()
+                    }
+
+                    Rectangle {
+                        anchors.top: createAddressButton.bottom
+                        anchors.topMargin: 8
+                        anchors.left: createAddressButton.left
+                        anchors.right: createAddressButton.right
+                        height: 2
+                        color: MoneroComponents.Style.appWindowBorderColor
+
+                        MoneroEffects.ColorTransition {
+                            targetObj: parent
+                            blackColor: MoneroComponents.Style._b_appWindowBorderColor
+                            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+                        }
+                    }
+                }
             }
 
             ColumnLayout {
@@ -108,6 +289,15 @@ Rectangle {
                         width: parent ? parent.width : undefined
                         Layout.fillWidth: true
                         color: itemMouseArea.containsMouse || index === appWindow.current_subaddress_table_index ? MKEcoinComponents.Style.titleBarButtonHoverColor : "transparent"
+
+                        Rectangle {
+                            visible: index === appWindow.current_subaddress_table_index
+                            Layout.fillHeight: true
+                            anchors.top: parent.top
+                            anchors.bottom: parent.bottom
+                            color: "darkgrey"
+                            width: 2
+                        }
 
                         Rectangle{
                             anchors.right: parent.right
@@ -199,8 +389,14 @@ Rectangle {
                                 image: "qrc:///images/edit.svg"
                                 fontAwesomeFallbackIcon: FontAwesome.edit
                                 fontAwesomeFallbackSize: 22
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+                                fontAwesomeFallbackOpacity: 0.5
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 Layout.preferredWidth: 23
                                 Layout.preferredHeight: 21
                                 visible: index !== 0
@@ -216,8 +412,14 @@ Rectangle {
                                 image: "qrc:///images/copy.svg"
                                 fontAwesomeFallbackIcon: FontAwesome.clipboard
                                 fontAwesomeFallbackSize: 22
+<<<<<<< HEAD
                                 color: MKEcoinComponents.Style.defaultFontColor
                                 opacity: 0.5
+=======
+                                color: MoneroComponents.Style.defaultFontColor
+                                opacity: isOpenGL ? 0.5 : 1
+                                fontAwesomeFallbackOpacity: 0.5
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
                                 Layout.preferredWidth: 16
                                 Layout.preferredHeight: 21
                                 tooltip: qsTr("Copy address to clipboard") + translationManager.emptyString
@@ -237,6 +439,16 @@ Rectangle {
                             appWindow.currentWallet.currentSubaddressAccount,
                             subaddressListView.currentIndex
                         );
+                        if (subaddressListView.currentIndex == 0) {
+                            selectedAddressDrescription.text = qsTr("Primary address") + translationManager.emptyString;
+                        } else {
+                            var selectedAddressLabel = appWindow.currentWallet.getSubaddressLabel(appWindow.currentWallet.currentSubaddressAccount, appWindow.current_subaddress_table_index);
+                            if (selectedAddressLabel == "") {
+                                selectedAddressDrescription.text = "(" + qsTr("no label") + ")" + translationManager.emptyString
+                            } else {
+                                selectedAddressDrescription.text = selectedAddressLabel
+                            }
+                        }
                     }
                 }
             }
@@ -252,6 +464,7 @@ Rectangle {
                     whiteColor: MKEcoinComponents.Style._w_appWindowBorderColor
                 }
             }
+<<<<<<< HEAD
 
             MKEcoinComponents.CheckBox {
                 id: addNewAddressCheckbox
@@ -330,6 +543,8 @@ Rectangle {
                         '');
                 }
             }
+=======
+>>>>>>> b6682330a6f87051c523c05b9b653eb494760003
         }
 
         MessageDialog {
@@ -362,6 +577,9 @@ Rectangle {
         if (appWindow.currentWallet) {
             appWindow.current_address = appWindow.currentWallet.address(appWindow.currentWallet.currentSubaddressAccount, 0)
             appWindow.currentWallet.subaddress.refresh(appWindow.currentWallet.currentSubaddressAccount)
+            if (subaddressListView.currentIndex == -1) {
+                subaddressListView.currentIndex = 0;
+            }
         }
     }
 
